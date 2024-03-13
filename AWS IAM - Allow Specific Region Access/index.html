@@ -142,6 +142,7 @@
             <li>Review and create the user.</li>
             <img src="review-user.png" alt="review-user.png" width="750" height="475">
         </ol>
+        <p>Save the Iam User credentials.</p>
         <p><strong>Note:</strong> This will create an IAM user without any attached policies, meaning the user has no permissions by default.</p>
     </section>
 
@@ -150,8 +151,11 @@
         <ol>
             <li>Open the AWS Management Console and navigate to the IAM service (In Root User).</li>
             <li>In the left navigation pane, click on "Policies."</li>
+            <img src="click-on-policies.png" alt="click-on-policies.png" width="750" height="475">
             <li>Click on the "Create policy" button.</li>
+            <img src="create-policies.png" alt="create-policies.png" width="750" height="475">
             <li>Choose the "JSON" tab and paste the JSON policy document:</li>
+            <img src="select-json.png" alt="select-json.png" width="750" height="475">
             <code>
             {
                 "Version": "2012-10-17",
@@ -208,6 +212,7 @@
         <p><strong>Note:</strong> IAM Policies for Only NV-Region For All Services</p>
 
             <li>Click "Next."</li>
+            <img src="step-2-next.png" alt="step-2-next.png" width="750" height="475">
             <li>Name the policy.</li>
             <li>Optionally, provide a description.</li>
             <li>Click "Create policy."</li>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setting Up Application Load Balancer(ALB)</title>
+    <title>Deploy AWS WAF on ALB</title>
 
 
     <style>
@@ -120,14 +120,14 @@ code {
     <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
         <div class="lb-col lb-tiny-24 lb-mid-24">
             <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 180px; padding-right: 180px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png'); background-color: #ffffff;">
-                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Setting Up Application Load Balancer(ALB)</h1>
+                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title">Deploy AWS WAF on ALB</h1>
                 <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
                     <div class="lb-col lb-tiny-24 lb-mid-6">
                     </div>
                     <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                         <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #0d0d0d; margin-top: 0px;">
                             <p style="color: #0d0d0d; font-weight: bold;">
-                                Amazon Elastic Load Balancer(ALB) distributes incoming traffic, enhancing application availability, fault tolerance, and scalability in AWS.
+                                Amazon Elastic Load Balancer (ALB) optimizes traffic distribution. Deploying AWS Web Application Firewall (WAF) enhances security by filtering and monitoring HTTP/HTTPS traffic, adding an extra layer of protection for your applications in AWS.
                             </p>
                         </div>
                     </div>
@@ -143,16 +143,14 @@ code {
 
 
     <section>
-    <h2>An Application Load Balancer (ALB) is a component commonly used in cloud computing environments to distribute incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, and IP addresses, within one or more availability zones. ALBs operate at the application layer (Layer 7 of the OSI model) and provide advanced routing and content-based routing features</h2>
+        <h><b>
+            Deploying AWS Web Application Firewall (WAF) on an Application Load Balancer (ALB) enhances your security posture by protecting your web applications from common web exploits. AWS WAF allows you to create custom rules to filter and monitor HTTP and HTTPS traffic, mitigating threats and ensuring the integrity of your applications. By integrating WAF with ALB, you add an additional layer of defense against malicious traffic and potential vulnerabilities.
+        </b></h> 
     </section>
 
     <div class="center-image">
-        <img src="ALB-SETTING UP-Photoroom.png-Photoroom.png" alt="ALB-SETTING UP-Photoroom.png-Photoroom.png" width="1200" height="600">
+        <img src="AWS WEB-WAF ON ALB.jpg" alt="AWS WEB-WAF ON ALB.jpg" width="1200" height="600">
     </div>
-
-
-
-
 
 <h1 style="text-align: center;">Here’s a simplified tutorial</h1>
 
@@ -324,6 +322,21 @@ code {
     <li>Under the "Listeners" tab, you should see the listener configured during ALB creation.</li>
     <li>Under the "Description" tab, you can find the DNS name of your ALB. Use this DNS name to access your application.</li>
 </ol>
+</section>
+
+<section>
+    <h1>Step 10q`: Create a Virtual Private Cloud (VPC)</h1>
+    <h2>Navigate to the VPC Dashboard:</h2>
+    <p>In the AWS Management Console, go to the VPC Dashboard.</p>
+    <h2>Create a VPC:</h2>
+    <ol>
+        <li>Click on "Create VPC" and follow the wizard.</li>
+        <!-- <img src="create-click-vpc.PNG" alt="create-click-vpc.PNG" width="325" height="170"> -->
+        <li>Specify a name for your VPC, define the IP address range (CIDR block).</li>
+        <!-- <img src="VPC.PNG" alt="VPC.PNG" width="375" height="350"> -->
+
+        <li>Click on "Create VPC".</li>
+    </ol>
 </section>
 
 

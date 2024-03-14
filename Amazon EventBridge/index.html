@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bridge</title>
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            max-width: 1500px;
+            color: #fff;
+            padding: 20px;
+            background-color: #6495ED;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center content horizontally */
+        }
+
+        section {
+            max-width: 1150px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #050505;
+
+        }
+        pre {
+            font-family: 'Arial', monospace;
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        p {
+            color: #0e0e0e;
+        }
+
+        ol {
+            color: #111010;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        body {
+                                font-family: Arial, sans-serif;
+                                margin: 20px;
+                            }
+                    
+                            li {
+                                margin-bottom: 10px;
+                            }
+                    
+                            .free-tier {
+                                background-color: #f0f8ff;
+                                padding: 10px;
+                                border-radius: 5px;
+                            }       
+    </style>
+
+
+</head>
+<body>
+    <section>
+    <div class="container">
+        <header>
+        <h1>Amazon Event Bridge</h1>
+    </header>
+
+        <p>EventBridge is a serverless service that uses events to connect application components together, making it easier for you to build scalable event-driven applications. Event-driven architecture is a style of building loosely-coupled software systems that work together by emitting and responding to events. Event-driven architecture can help you boost agility and build reliable, scalable applications.</p>
+        <p>Use EventBridge to route events from sources such as home-grown applications, AWS services, and third-party software to consumer applications across your organization. EventBridge provides simple and consistent ways to ingest, filter, transform, and deliver events so you can build applications quickly.</p>
+        <p>EventBridge (CloudWatch Events) invokes your function asynchronously with an event document that wraps the event from its source. The following example shows an event that originated from a database snapshot in Amazon Relational Database Service.</p>
+    </section>
+<section>
+        <h2>Example EventBridge (CloudWatch Events) event</h2>
+     <pre>
+            {
+                "version": "0",
+                "id": "fe8d3c65-xmpl-c5c3-2c87-81584709a377",
+                "detail-type": "RDS DB Instance Event",
+                "source": "aws.rds",
+                "account": "123456789012",
+                "time": "2020-04-28T07:20:20Z",
+                "region": "us-east-2",
+                "resources": [
+                    "arn:aws:rds:us-east-2:123456789012:db:rdz6xmpliljlb1"
+                ],
+                "detail": {
+                    "EventCategories": [
+                        "backup"
+                    ],
+                    "SourceType": "DB_INSTANCE",
+                    "SourceArn": "arn:aws:rds:us-east-2:123456789012:db:rdz6xmpliljlb1",
+                    "Date": "2020-04-28T07:20:20.112Z",
+                    "Message": "Finished DB Instance backup",
+                    "SourceIdentifier": "rdz6xmpliljlb1"
+                }
+            }
+            
+           
+        </pre>
+        <p>You can also create a Lambda function and direct AWS Lambda to invoke it on a regular schedule. You can specify a fixed rate (for example, invoke a Lambda function every hour or 15 minutes), or you can specify a Cron expression.</p>
+    </section>
+<section>
+        <h2>Example EventBridge (CloudWatch Events) message event</h2>
+<pre>
+    {
+        "version": "0",
+        "account": "123456789012",
+        "region": "us-east-2",
+        "detail": {},
+        "detail-type": "Scheduled Event",
+        "source": "aws.events",
+        "time": "2019-03-01T01:23:45Z",
+        "id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
+        "resources": [
+          "arn:aws:events:us-east-2:123456789012:rule/my-schedule"
+        ]
+      }
+      </pre>
+    </section>
+
+<section>
+      <h2>To configure EventBridge (CloudWatch Events) to invoke your function</h2>
+      <p>1.Open the Functions page of the Lambda console.</p>
+      <p>2.Choose a function</p>
+      <p>3.Under Function overview, choose Add trigger.</p>
+      <p>4.Set the trigger type to EventBridge (CloudWatch Events).</p>
+      <p>5.For Rule, choose Create a new rule.</p>
+      <p>6.Configure the remaining options and choose Add.</p>
+    </section>
+    </div>
+</body>
+</html>

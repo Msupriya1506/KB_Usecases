@@ -156,8 +156,7 @@ code {
 
 <section>
     <h1>Step 1: Create a Virtual Private Cloud (VPC)</h1>
-    <h2>Navigate to the VPC Dashboard:</h2>
-    <p>In the AWS Management Console, go to the VPC Dashboard.</p>
+    <p>Navigate to the VPC Dashboard: In the AWS Management Console, go to the VPC Dashboard.</p>
     <h2>Create a VPC:</h2>
     <ol>
         <li>Click on "Create VPC" and follow the wizard.</li>
@@ -167,10 +166,8 @@ code {
 
         <li>Click on "Create VPC".</li>
     </ol>
-</section>
 
-<section>
-    <h1>Step 2: Creating Public Subnets</h1>
+    <h2>Creating Public Subnets</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Subnets" in the left navigation pane.</li>
         <li>Click "Create subnet" and choose the VPC you just created.</li>
@@ -184,38 +181,29 @@ code {
         </ul>
         <li>Repeat the process to create the second public subnet in a different availability zone.</li>
     </ol>
-</section>
 
-<section>
-    <h1>Step 3: Create an Internet Gateway</h1>
+    <h2>Create an Internet Gateway</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Internet Gateways" in the left navigation pane.</li>
         <li>Click "Create Internet Gateway," attach it to your VPC, and ensure it's in a "detached" state initially.</li>
     </ol>
-</section>
 
-
-<section>
-    <h1>Step 4: Attach Internet Gateway to VPC</h1>
+    <h2>Attach Internet Gateway to VPC</h2>
     <ol>
         <li>Select the Internet Gateway you created.</li>
         <li>Click "Actions," and choose "Attach to VPC."</li>
         <li>Attach it to the VPC you created.</li>
     </ol>
-</section>
 
-<section>
-    <h1>Step 5: Create a Public Route Table</h1>
+    <h2>Create a Public Route Table</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Route Tables."</li>
         <li>Create a new route table.</li>
         <li>Name the route table.</li>
         <li>Click on "Create".</li>
     </ol>
-</section>
-    
-<section>
-    <h1>Step 6: Associate Subnets with Route Table</h1>
+
+    <h2>Associate Subnets with Route Table</h2>
     <ol>
         <li>In the "Subnets" section, select both public subnets.</li>
         <li>Click “save associations.”</li>
@@ -230,7 +218,7 @@ code {
 </section>
 
 <section>
-    <h1>Step 7: Launch EC2 Instances in Public Subnets</h1>
+    <h1>Step 2: Launch EC2 Instances in Public Subnets</h1>
     <ol>
         <li>Click on "Instances" in the left navigation pane.</li>
         <li>Click "Launch Instance."</li>
@@ -266,10 +254,8 @@ code {
                 </div>
 
     <h2>Add sample(to check) index.html to /var/www/html on server</h2>
-</section>
 
-<section>
-    <h1>Step 8: Launch Second Instance</h1>
+    <h1>Launch Second Instance</h1>
 
     <ol>
         <li>Repeat the above steps to launch the second EC2 instance.</li>
@@ -280,7 +266,7 @@ code {
    </section>
 
    <section>
-    <h1>Step 9: Creating Target Group and Application Load Balancer</h1>
+    <h1>Step 3: Creating Target Group and Application Load Balancer</h1>
 
     <h2><b>Creating Target Group:</b></h2>
     <ol>
@@ -313,9 +299,7 @@ code {
                 <li>Check Summary.</li>
                 <li>Click on “Create Load Balancer”.</li>
         </ol>
-</section>
 
-<section>
 <h1>Verify ALB Configuration</h1>
 <ol>
     <li>Once the ALB is created, go to the "Load Balancers" section and select your ALB to view details.</li>
@@ -325,19 +309,62 @@ code {
 </section>
 
 <section>
-    <h1>Step 10q`: Create a Virtual Private Cloud (VPC)</h1>
-    <h2>Navigate to the VPC Dashboard:</h2>
-    <p>In the AWS Management Console, go to the VPC Dashboard.</p>
-    <h2>Create a VPC:</h2>
+    <h1>Step 4: Create a Web Application Firewall (WAF)</h1>
+    
+    <h2>Creating IP Set</h2>
     <ol>
-        <li>Click on "Create VPC" and follow the wizard.</li>
-        <!-- <img src="create-click-vpc.PNG" alt="create-click-vpc.PNG" width="325" height="170"> -->
-        <li>Specify a name for your VPC, define the IP address range (CIDR block).</li>
-        <!-- <img src="VPC.PNG" alt="VPC.PNG" width="375" height="350"> -->
+        <li>Go to AWS WAF & Shield service.</li>
+        <li>Click on IP Set.</li>
+        <li>Click on "Create IP set".</li>
+        <li>Give your IP Set a name and optionally a description.</li>
+        <li>Select the region you want to create.</li>
+        <li>IP version should be IPV4.</li>
+        <li>Add IP addresses which you want to Block (for example your laptop IP address).</li>
+        <li>Click on "Create IP Set".</li>
+    </ol>
 
-        <li>Click on "Create VPC".</li>
+    <h2>Create Web ACL</h2>
+    <ol>
+        <li>Go to AWS WAF & Shield service.</li>
+        <li>Select the Region you want to create.</li>
+        <li>Click on "Create web ACL".</li>
+        <li>Give your web ACL a name and optionally a description.</li>
+        <li>Resource type is "Regional resource".</li>
+        <li>Check the region.</li>
+        <li>Click on "Add AWS resource".</li>
+        <li>Select Application Load Balancer and select ALB which you created.</li>
+        <li>Add rules to your web ACL to specify the actions to take when a request matches the conditions.</li>
+        <li>Click on "Add rules" and select "Add my own rules and rule groups".</li>
+        <li>Select the "IP Set".</li>
+        <li>Name the Rule.</li>
+        <li>Select the IP set which you created.</li>
+        <li>Select the action which you need (For Example, select Block).</li>
+        <li>Click on "Add rule".</li>
+        <li>Under Add rules and rule groups, select the rule.</li>
+        <li>Click on "Next".</li>
+        <li>Under Set rule priority, select the rule.</li>
+        <li>Click on "Next".</li>
+        <li>Under configure metrics, keep them default.</li>
+        <li>Click on "Next".</li>
+        <li>Review and create the web ACL.</li>
+    </ol>
+    
+    <h2>Associate WAF with ALB</h2>
+    <ol>
+        <li>After creating the ALB, navigate back to the AWS WAF & Shield service.</li>
+        <li>Go to "Web ACLs" and select the web ACL you created earlier.</li>
+        <li>Click on "Associate AWS resources" and check if ALB is associated with it.</li>
+        <li>Click on "Rules" and check if the rule is attached.</li>
+    </ol>
+
+    <h2>Testing, Monitoring, and Adjustments</h2>
+    <ol>
+        <li>After associating the WAF with the ALB, test your application to ensure that traffic is being routed through the ALB and filtered by the WAF rules.</li>
+        <li>Monitor the AWS WAF metrics and ALB metrics to ensure that your setup is working as expected.</li>
+        <li>Adjust WAF rules and ALB settings as needed based on your application's traffic patterns and security requirements.</li>
     </ol>
 </section>
+
 
 
 

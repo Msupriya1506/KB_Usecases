@@ -150,8 +150,7 @@
     </div>
     <section>
         <p>An event bus is a router that receives events and delivers them to zero or more destinations, or targets. Event buses are well-suited for routing events from many sources to many targets, with optional transformation of events prior to delivery to a target.</p>
-        <img src="how-it-works.png" alt="how-it-works.png" width="700" height="250">
-        <p>Rules associated with the event bus evaluate events as they arrive. Each rule checks whether an event matches the rule's pattern. If the event does match, EventBridge sends the event.</p>
+        <img src="how-it-works.png" alt="how-it-works.png" width="780" height="230" style="display: block; margin-left: auto; margin-right: auto;">        <p>Rules associated with the event bus evaluate events as they arrive. Each rule checks whether an event matches the rule's pattern. If the event does match, EventBridge sends the event.</p>
         <p>You associate a rule with a specific event bus, so the rule only applies to events received by that event bus.</p>
         <p><strong>Note:</strong> You can also process events using EventBridge Pipes. EventBridge Pipes is intended for point-to-point integrations; each pipe receives events from a single source for processing and delivery to a single target. Pipes also include support for advanced transformations and enrichment of events prior to delivery to a target. For more information, see Amazon EventBridge Pipes.</p>
         
@@ -167,7 +166,7 @@
   <li>For each event that matches a rule, EventBridge then sends the event to the targets specified for that rule. Optionally, as part of the rule, you can also specify how EventBridge should transform the event prior to sending it to the target(s).</li>
   <li>An event might match multiple rules, and each rule can specify up to five targets. (An event may not match any rules, in which case EventBridge takes no action.)</li>
 </ul>
-<img src="how-it-works2.png" alt="how-it-works2.png" width="750" height="350">
+<img src="how-it-works2.png" alt="how-it-works2.png" width="750" height="350" style="display: block; margin-left: auto; margin-right: auto;">
 
 <p>Consider an example using the EventBridge default event bus, which automatically receives events from AWS services:</p>
 
@@ -213,7 +212,7 @@
   <li>Using multiple event buses in your applications to divide up the event traffic. For example, creating a bus to process events containing personal identification information (PII), and another bus for events that don't.</li>
   <li>Aggregating events by sending events from multiple event buses to a centralized event bus. This centralized bus can be in the same account as the other buses, but can also be in a different account or Region.</li>
 </ul>
-<img src="event bus 3.png" alt="event bus 3.png" width="750" height="570">
+<img src="event bus 3.png" alt="event bus 3.png" width="770" height="570" style="display: block; margin-left: auto; margin-right: auto;">
 
 
 <h1>Events</h1>

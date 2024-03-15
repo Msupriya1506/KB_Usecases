@@ -157,11 +157,12 @@
       <li>Create an Amazon SNS topic.</li>
       <li>Subscribe to the topic so you can get email notifications when a new message is posted to the topic.</li>
       <li>In Amazon CloudWatch, set an alarm on the Errors metric of your Lambda function to publish a message to your SNS topic when errors occur.</li>
-    </section>
-<section>
+    
       <h2>Prerequisites</h2>
       <p>This tutorial assumes that you have some knowledge of basic Lambda operations and the Lambda console. If you haven't already, follow the instructions in Create a Lambda function with the console to create your first Lambda function.</p>
-<h2>Create a Lambda function</h2>
+    </section>
+    <section>
+      <h2>Create a Lambda function</h2>
 <p>1.Sign in to the AWS Management Console and open the AWS Lambda console at, click <a href="https://console.aws.amazon.com/lambda/" target="_blank">here</a>.</p>
 <p>2. Choose Create function.</p>
 <p>3. Choose Use a blueprint.</p>
@@ -180,11 +181,11 @@
     <li>site – https://docs.aws.amazon.com/lambda/latest/dg/welcome.html</li>
     <li>expected – What is AWS Lambda?</li>
     <li>Choose Create function.</li>
-<li>EventBridge (CloudWatch Events) emits an event every minute, based on the schedule expression. The event triggers the Lambda function, which verifies that the expected string appears in the specified page. For more information on expressions schedules, see Schedule expressions using rate or cron.</li>
+<p>EventBridge (CloudWatch Events) emits an event every minute, based on the schedule expression. The event triggers the Lambda function, which verifies that the expected string appears in the specified page. For more information on expressions schedules, see Schedule expressions using rate or cron.</p>
 </section>
 <section>
     <h2>Test the Lambda function</h2>
-    <li>Test the function with a sample event provided by the Lambda console.</li>
+    <p>Test the function with a sample event provided by the Lambda console.</p>
     <p>1. Open the Functions page of the Lambda console.</p>
     <p>2. Choose the lambda-canary function.</p>
     <p>3. Choose Test.</p>
@@ -196,8 +197,8 @@
 
 <section>
     <h2>Create an Amazon SNS topic and subscribe to it</h2>
-<li>Create an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications when the canary function returns an error.</li>
-<li>To create a topic</li>
+<p>Create an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications when the canary function returns an error.</p>
+<p>To create a topic</p>
 <p>1. Open the Amazon SNS console.</p>
 <p>2. Switch to the AWS Region where you created the Lambda function.</p>
 <p>3. Choose Topics, and then choose Create topic.</p>
@@ -211,13 +212,13 @@
 <li>Protocol – Email.</li>
 <li>Endpoint – Your email address.</li>
 <p>8. Choose Create subscription.</p>
-<li>Amazon SNS sends an email from Canary <no-reply@sns.amazonaws.com>, reflecting the friendly name of the topic. Use the link in the email to confirm your address.</li>
+<p>Amazon SNS sends an email from Canary <no-reply@sns.amazonaws.com>, reflecting the friendly name of the topic. Use the link in the email to confirm your address.</p>
 
 </section>
 <section>
     <h2>Configure an alarm</h2>
-<li>Configure an alarm in Amazon CloudWatch that monitors the Lambda function and sends a notification when it fails.</li>
-<li>To create an alarm</li>
+<p>Configure an alarm in Amazon CloudWatch that monitors the Lambda function and sends a notification when it fails.</p>
+<p>To create an alarm</p>
     <p>1. Open the CloudWatch console.</p>
 <p>2. Switch to the AWS Region where you created the Lambda function.</p>
 <p>3. Choose All alarms.</p>
@@ -250,7 +251,7 @@
 <section>
    <h2> Clean up your resources</h2>
 
-    <li>You can now delete the resources that you created for this tutorial, unless you want to retain them. By deleting AWS resources that you're no longer using, you prevent unnecessary charges to your AWS account.</li>
+    <p>You can now delete the resources that you created for this tutorial, unless you want to retain them. By deleting AWS resources that you're no longer using, you prevent unnecessary charges to your AWS account.</p>
     <h3>To delete the Lambda function</h3>
     <p>1. Open the Functions page of the Lambda console.</p>
     <p>2. Select the function that you created.</p>

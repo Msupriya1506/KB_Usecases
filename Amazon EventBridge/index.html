@@ -12,72 +12,115 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #f8f8f8; /* Light Grey Color */
         }
-
-        header {
-            max-width: 1500px;
-            color: #fff;
-            padding: 20px;
-            background-color: #6495ED;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Center content horizontally */
-        }
-
-        section {
-            max-width: 1150px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
+        
+                header {
+                    max-width: 1500px;
+                    color: #fff;
+                    padding: 20px;
+                    background-color: #6495ED;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    text-align: center; /* Center content horizontally */
+                }
+        
+                section {
+                    max-width: 1150px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(23, 18, 93, 0.1);
+                }
+        
+                h2 {
             color: #050505;
-
+        
+            font-size: 1.0em;
+            margin-bottom: 10px;
+        
         }
-        pre {
-            font-family: 'Arial', monospace;
-            background-color: #f8f8f8;
-            padding: 10px;
-            border: 1px solid #ddd;
-            overflow-x: auto;
+        
+        code {
+                    display: block;
+                    background-color: #f4f4f4;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                }
+        
+                .or {
+                    font-weight: bold;
+                    margin: 0 10px; /* Adjusted margin */
+                }
+        
+                pre {
+                    font-family: 'Arial', monospace;
+                    background-color: #f8f8f8;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    overflow-x: auto;
+                }
+        
+                p {
+                    color: #0e0e0e;
+                }
+        
+                ol {
+                    color: #111010;
+                    padding-left: 20px;
+                }
+        
+                a {
+                    color: #0066cc;
+                    text-decoration: none;
+                }
+        
+                th {
+                    background-color: #f2f2f2;
+                }
+        
+                dl {
+          margin-bottom: 20px;
         }
-
-        p {
-            color: #0e0e0e;
+        
+        dt {
+          font-weight: bold;
         }
-
-        ol {
-            color: #111010;
-            padding-left: 20px;
+        
+        dd {
+          margin-left: 20px;
         }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-        body {
-                                font-family: Arial, sans-serif;
-                                margin: 20px;
-                            }
-                    
-                            li {
-                                margin-bottom: 10px;
-                            }
-                    
-                            .free-tier {
-                                background-color: #f0f8ff;
-                                padding: 10px;
-                                border-radius: 5px;
-                            }       
-    </style>
+        
+                    .lb-h1 {
+                        /* Add styles for the h1 element */
+                        text-align: center; /* Center-align the heading */
+                    }
+        
+                    .center-image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh; /* Optional: Adjust the height as needed */
+                }
+        
+        
+                body {
+                                        font-family: Arial, sans-serif;
+                                        margin: 20px;
+                                    }
+                            
+                                    li {
+                                        margin-bottom: 10px;
+                                    }
+                            
+                                    .free-tier {
+                                        background-color: #f0f8ff;
+                                        padding: 10px;
+                                        border-radius: 5px;
+                                    }       
+            </style>
+        
 
 
 </head>
@@ -94,7 +137,6 @@
                         <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #0d0d0d; margin-top: 0px;">
                                 <p style="color: #0d0d0d; font-weight: bold;">
-    
                                     "AWS Lambda with EventBridge enables serverless event-driven computing, triggering Lambda functions in response to events within your AWS environment."                                </p>
                             </div>
                         </div>
@@ -294,6 +336,28 @@
     <p>3. Enter "delete me" in the text input field.</p>
     <p>4. Choose Delete.</p>
 </section>
+
+<div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+    <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+        <div class="lb-col lb-tiny-24 lb-mid-24">
+            <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 20px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png');">
+                <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title"> Congratulations!</h1>
+                <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                    <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #FFFFFF; margin-top: 0px;">
+                            <p style="color: #FFFFFF;">
+                                "Congratulations on adopting Amazon EventBridge! 🎉 Elevate your event-driven architecture, fostering scalability and efficiency. May your journey be filled with continued success and innovation as you harness the power of event-driven computing. 👏🚀         
+                            </p>                   
+                        </div>                    
+                    <div class="lb-col lb-tiny-24 lb-mid-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

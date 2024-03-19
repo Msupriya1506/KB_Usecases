@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudTrail</title>
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Light Grey Color */
+        }
+        
+                header {
+                    max-width: 1500px;
+                    color: #fff;
+                    padding: 20px;
+                    background-color: #6495ED;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    text-align: center; /* Center content horizontally */
+                }
+        
+                section {
+                    max-width: 1150px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(23, 18, 93, 0.1);
+                }
+        
+                h2 {
+            color: #050505;
+        
+            font-size: 1.0em;
+            margin-bottom: 10px;
+        
+        }
+        
+        code {
+                    display: block;
+                    background-color: #f4f4f4;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                }
+        
+                .or {
+                    font-weight: bold;
+                    margin: 0 10px; /* Adjusted margin */
+                }
+        
+                pre {
+                    font-family: 'Arial', monospace;
+                    background-color: #f8f8f8;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    overflow-x: auto;
+                }
+        
+                p {
+                    color: #0e0e0e;
+                }
+        
+                ol {
+                    color: #111010;
+                    padding-left: 20px;
+                }
+        
+                a {
+                    color: #0066cc;
+                    text-decoration: none;
+                }
+        
+                th {
+                    background-color: #f2f2f2;
+                }
+        
+                dl {
+          margin-bottom: 20px;
+        }
+        
+        dt {
+          font-weight: bold;
+        }
+        
+        dd {
+          margin-left: 20px;
+        }
+        
+                    .lb-h1 {
+                        /* Add styles for the h1 element */
+                        text-align: center; /* Center-align the heading */
+                    }
+        
+                    .center-image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh; /* Optional: Adjust the height as needed */
+                }
+        
+        
+                body {
+                                        font-family: Arial, sans-serif;
+                                        margin: 20px;
+                                    }
+                            
+                                    li {
+                                        margin-bottom: 10px;
+                                    }
+                            
+                                    .free-tier {
+                                        background-color: #f0f8ff;
+                                        padding: 10px;
+                                        border-radius: 5px;
+                                    }       
+            </style>
+        
+
+
+</head>
+<body>
+
+    <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+        <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+            <div class="lb-col lb-tiny-24 lb-mid-24">
+                <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 180px; padding-right: 180px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png'); background-color: #ffffff;">
+                    <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title">AWS CloudTrail</h1>
+                    <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-12" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-txt-16 lb-rtxt" style="color: #0d0d0d; margin-top: 0px;">
+                                <p style="color: #0d0d0d; font-weight: bold;">
+                                    "Amazon EventBridge (formerly Amazon CloudWatch Events) is a serverless event bus service that makes it easy to connect application data from a variety of sources to AWS services."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <h1>AWS CloudTrail</h1>
+  <p>AWS CloudTrail is an AWS service that helps you enable operational and risk auditing, governance, and compliance of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.</p>
+  <p>CloudTrail is active in your AWS account when you create it and doesn't require any manual setup. When activity occurs in your AWS account, that activity is recorded in a CloudTrail event.</p>
+  <p>CloudTrail provides three ways to record events:</p>
+  <ul>
+    <li><strong>Event history:</strong><p>The Event history provides a viewable, searchable, downloadable, and immutable record of the past 90 days of management events in an AWS Region. You can search events by filtering on a single attribute. You automatically have access to the Event history when you create your account. For more information, see Working with CloudTrail Event history.</li></p>
+    <li><strong>CloudTrail Lake:</strong><p>AWS CloudTrail Lake is a managed data lake for capturing, storing, accessing, and analyzing user and API activity on AWS for audit and security purposes. CloudTrail Lake converts existing events in row-based JSON format to Apache ORC format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option. You can create an event data store for a single AWS account or for multiple AWS accounts by using AWS Organizations. You can import any existing CloudTrail logs from your S3 buckets into an existing or new event data store. You can also visualize top CloudTrail event trends with Lake dashboards. For more information, see Working with AWS CloudTrail Lake and Create an event data store.</p>
+        <p>CloudTrail Lake event data stores and queries incur charges. When you create an event data store, you choose the pricing option you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. When you run queries in Lake, you pay based upon the amount of data scanned. For information about CloudTrail pricing and managing Lake costs, see AWS CloudTrail Pricing and Managing CloudTrail Lake costs.</p></li>
+    <li><strong>Trails:</strong> <p>Trails capture a record of AWS activities, delivering and storing these events in an Amazon S3 bucket, with optional delivery to Amazon CloudWatch Logs and Amazon EventBridge. You can input these events into your security monitoring solutions. You can also use your own third-party solutions or solutions such as Amazon Athena to search and analyze your CloudTrail logs. You can create trails for a single AWS account or for multiple AWS accounts by using AWS Organizations. You can log Insights events to analyze your management events for anomalous behavior in API call volumes and error rates. For more information, see Creating a trail for your AWS account.</p>
+        <p>You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see AWS CloudTrail Pricing. For information about Amazon S3 pricing, see Amazon S3 Pricing.</p>
+        <p>Visibility into your AWS account activity is a key aspect of security and operational best practices. You can use CloudTrail to view, search, download, archive, analyze, and respond to account activity across your AWS infrastructure. You can identify who or what took which action, what resources were acted upon, when the event occurred, and other details to help you analyze and respond to activity in your AWS account.</p>
+        <p>You can integrate CloudTrail into applications using the API, automate trail or event data store creation for your organization, check the status of event data stores and trails you create, and control how users view CloudTrail events.</p>
+    </li>
+  </ul>
+    </section>
+
+    <section>
+        <h1>How CloudTrail works</h1>
+        <p>CloudTrail is active in your AWS account when you create it. When activity occurs in your AWS account, that activity is recorded in a CloudTrail event. You can view the past 90 days of recorded API activity (management events) in an AWS Region in the CloudTrail console by going to Event history.</p>
+  <p>For an ongoing record of events in your AWS account, create an event data store or a trail. Trails can log events for CloudTrail management, data, and Insights events. Event data stores can log CloudTrail management and data events, CloudTrail Insights events, AWS Config configuration items, AWS Audit Manager evidence, and non-AWS events from integrations.</p>
+  <p>To get started with CloudTrail, see Getting started with AWS CloudTrail tutorials.</p>
+  <p>For CloudTrail pricing, see AWS CloudTrail Pricing. For Amazon S3 and Amazon SNS pricing, see Amazon S3 Pricing and Amazon SNS Pricing.</p>
+
+  <h1>Event history</h1>
+  <p>The Event history provides a viewable, searchable, downloadable, and immutable record of the past 90 days of recorded management events in an AWS Region. You can easily view management events in the CloudTrail console by going to the Event history page. You can also view the event history by running the aws cloudtrail lookup-events command, or the LookupEvents API operation. You can search events in Event history by filtering for events on a single attribute. For more information, see Working with CloudTrail Event history.</p>
+  <p>The Event history is not connected to any trails or event data stores that exist in your account and is not affected by configuration changes you make to your trails and event data stores.</p>
+
+  <h1>CloudTrail Lake and event data stores</h1>
+  <p>You can create a CloudTrail Lake event data store to archive, analyze, and respond to changes in your AWS resources. CloudTrail Lake converts existing events in row-based JSON format to Apache ORC format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option.</p>
+  <p>You can create an event data store to collect CloudTrail management and data events, CloudTrail Insights events, AWS Config configuration items, AWS Audit Manager evidence, or non-AWS events. You can create event data stores using the console, the AWS CLI, or the CloudTrail API. For more information about creating event data stores using the console, see Create an event data store. For more information about creating event data stores using the AWS CLI, see Managing CloudTrail Lake by using the AWS CLI.</p>
+  <p>CloudTrail Lake lets you log events from applications outside of AWS, including from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers by creating integrations. You can create integrations with more than 12 partners to log events that occur outside AWS to your event data stores. To create an integration, you first configure a channel over which events are delivered. You can use CloudTrail Lake to store, access, analyze, troubleshoot and take action on this data without maintaining multiple log aggregators and reporting tools.</p>
+  <p>Event data stores can log events from the current AWS Region, or from all AWS Regions in your AWS account. Event data stores that you are using to log Integration events from outside AWS must be for a single Region only; they cannot be multi-Region event data stores.</p>
+  <p>To change an event data store after you create it, you can run the update-event-data-store command, or use the CloudTrail Lake console.</p>
+  <p>If you have created an organization in AWS Organizations, you can create an organization event data store that logs all events for all AWS accounts in that organization. Organization event data stores can apply to all AWS Regions, or the current Region. Organization event data stores must be created using the management account or delegated administrator account, and when specified as applying to an organization, are automatically applied to all member accounts in the organization. Member accounts cannot see the organization event data store, nor can they modify or delete it. By default, member accounts do not have access to the log files for an organization event data store, nor can they run queries on organization event data stores. Organization event data stores cannot be used to collect events from outside of AWS. For more information, see Organization event data stores.</p>
+
+  <h1>CloudTrail trails</h1>
+  <p>You can also create a CloudTrail trail to archive, analyze, and respond to changes in your AWS resources. Trails can log CloudTrail management events, data events, and Insights events.</p>
+  <p>A trail is a configuration that enables delivery of events to an Amazon S3 bucket that you specify. You can also deliver and analyze events in a trail with Amazon CloudWatch Logs and Amazon EventBridge. You can create trails with the CloudTrail console, the AWS CLI, or the CloudTrail API.</p>
+  <h2>Types of Trails</h2>
+  <ul>
+    <li>A trail that applies to all Regions</li>
+    <li>A trail that applies to one Region</li>
+  </ul>
+  <p>For both types of trails, you can specify an Amazon S3 bucket from any Region.</p>
+  <p>Beginning on April 12, 2019, trails are viewable only in the AWS Regions where they log events. If you create a trail that logs events in all AWS Regions, it will appear in the console in all AWS Regions. If you create a trail that only logs events in a single AWS Region, you can view and manage it only in that AWS Region.</p>
+  <p>If you have created an organization in AWS Organizations, you can create an organization trail that logs all events for all AWS accounts in that organization. Organization trails can apply to all AWS Regions, or the current Region. Organization trails must be created using the management account or delegated administrator account, and when specified as applying to an organization, are automatically applied to all member accounts in the organization. Member accounts can see the organization trail, but cannot modify or delete it.</p>
+  <p>You can change the configuration of a trail after you create it, including whether it logs events in one Region or all Regions.</p>
+  <p>By default, CloudTrail event log files from trails are encrypted using Amazon S3 server-side encryption (SSE). You can also choose to encrypt your log files with an AWS Key Management Service (AWS KMS) key. You can store your log files in your bucket for as long as you want. You can also define Amazon S3 lifecycle rules to archive or delete log files automatically. If you want notifications about log file delivery and validation, you can set up Amazon SNS notifications.</p>
+  <p>CloudTrail publishes log files multiple times an hour, about every 5 minutes. These log files contain API calls from services in the account that support CloudTrail.</p>
+
+  <h1>CloudTrail channels</h1>
+  <p>CloudTrail supports two types of channels:</p>
+  <h2>Channels for CloudTrail Lake Integrations with External Event Sources</h2>
+  <p>CloudTrail Lake uses channels to bring non-AWS events into CloudTrail Lake from external partners that work with CloudTrail, or from your own sources. When you create a channel, you choose one or more event data stores to store events that arrive from the channel source. You can change the destination event data stores for a channel as needed, as long as the destination event data stores are set to log activity events. When you create a channel for events from an external partner, you provide a channel ARN to the partner or source application. The resource policy attached to the channel allows the source to transmit events through the channel. For more information, see <a href="link_to_create_integration">Create an integration with an event source outside of AWS</a> and <a href="link_to_create_channel_api">CreateChannel in the AWS CloudTrail API Reference</a>.</p>
+  <h2>Service-linked Channels</h2>
+  <p>AWS services can create a service-linked channel to receive CloudTrail events on your behalf. The AWS service creating the service-linked channel configures advanced event selectors for the channel and specifies whether the channel applies to all Regions, or a single Region.</p>
+  <p>You can use the CloudTrail console or AWS CLI to view information about any CloudTrail service-linked channels created by AWS services.</p>
+
+
+<h1>CloudTrail workflow</h1>
+<h2>View event history for your AWS account</h2>
+  <p>You can view and search the last 90 days of events recorded by CloudTrail in the CloudTrail console or by using the AWS CLI. For more information, see <a href="link_to_event_history_guide">Working with CloudTrail Event history</a>.</p>
+  <h2>Download events</h2>
+  <p>You can download a CSV or JSON file containing up to the past 90 days of CloudTrail events for your AWS account. For more information, see <a href="link_to_downloading_events_guide">Downloading events</a>.</p>
+  <h2>Enable CloudTrail Lake</h2>
+  <p>CloudTrail Lake lets you run fine-grained SQL-based queries on events from both AWS sources, and sources outside of AWS. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option. CloudTrail Lake is part of an auditing solution that helps you perform security investigations and troubleshooting. For more information, see <a href="link_to_working_with_cloudtrail_lake">Working with AWS CloudTrail Lake</a>.</p>
+  <h2>Create an event data store</h2>
+  <p>When you create an event data store in CloudTrail Lake, you choose the type of events to include in your event data store. For more information, see <a href="link_to_create_event_data_store">Create an event data store</a>.</p>
+  <h2>View Lake dashboards</h2>
+  <p>You can use CloudTrail Lake dashboards to visualize the events in an event data store. You can select from several different dashboard types. For more information, see <a href="link_to_view_lake_dashboards">View Lake dashboards</a>.</p>
+  <h2>Log management and data events</h2>
+  <p>Configure your event data stores to log read-only, write-only, or all management and data events. By default, event data stores log management events. For more information, see <a href="link_to_logging_management_events">Logging management events</a> and <a href="link_to_logging_data_events">Logging data events</a>.</p>
+  <h2>Log Insights events</h2>
+  <p>Configure your event data stores to log Insights events to help you identify and respond to unusual activity associated with management API calls. For more information, see <a href="link_to_create_insights_event_data_store">Create an event data store for CloudTrail Insights events</a> and <a href="link_to_logging_insights_events">Logging Insights events</a>.</p>
+  <h2>Copy trail events to CloudTrail Lake</h2>
+  <p>You can copy existing trail events to a CloudTrail Lake event data store to create a point-in-time snapshot of events logged to the trail. For more information, see <a href="link_to_copy_trail_events">Copy trail events to an event data store</a>.</p>
+  <h2>Enable federation on an event data store</h2>
+  <p>You can federate an event data store to see the metadata associated with the event data store in the AWS Glue Data Catalog and run SQL queries on the event data using Amazon Athena. The table metadata stored in the AWS Glue Data Catalog lets the Athena query engine know how to find, read, and process the data that you want to query. For more information, see <a href="link_to_enable_federation">Federate an event data store</a>.</p>
+  <h2>Stop or start event ingestion on an event data store</h2>
+  <p>You can stop and start event ingestion on event data stores that collect CloudTrail management and data events, or AWS Config configuration items. For more information about how to stop event ingestion in the CloudTrail console, see <a href="link_to_stop_ingestion_console">Stop and start event ingestion</a>. For more information about how to stop event ingestion by using the AWS CLI, see <a href="link_to_stop_ingestion_cli">Stop ingestion on an event data store with the AWS CLI</a>.</p>
+  <h2>Create an integration with an event source outside of AWS</h2>
+  <p>You can use CloudTrail Lake integrations to log and store user activity data from outside of AWS; from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers. For information about creating an integration in the CloudTrail console, see <a href="link_to_create_integration_console">Create an integration with an event source outside of AWS</a>. For information about creating an integration by using the AWS CLI, see <a href="link_to_create_integration_cli">Create an integration to log events from outside AWS with the AWS CLI</a>.</p>
+  <h2>View Lake sample queries in the CloudTrail console</h2>
+  <p>The CloudTrail console provides a number of sample queries that can help you get started writing your own queries. For more information, see <a href="link_to_view_sample_queries">Viewing sample queries in the CloudTrail console</a>.</p>
+  <h2>Create or edit a query</h2>
+  <p>Queries in CloudTrail are authored in SQL. You can build a query on the CloudTrail Lake Editor tab by writing the query in SQL from scratch, or by opening a saved or sample query and editing it. For more information, see <a href="link_to_create_edit_query">Create or edit a query</a> and <a href="link_to_sql_constraints">CloudTrail Lake SQL constraints</a>.</p>
+  <h2>Save CloudTrail Lake query results to an Amazon S3 bucket</h2>
+  <p>When you run a query, you can save the query results to an S3 bucket. For more information, see <a href="link_to_save_query_results">Run a query and save query results</a>.</p>
+  <h2>Download saved query results</h2>
+  <p>You can download a CSV file containing your saved CloudTrail Lake query results. For more information, see <a href="link_to_download_saved_query_results">Download your CloudTrail Lake saved query results</a>.</p>
+  <h2>Validate saved query results</h2>
+  <p>You can use CloudTrail query results integrity validation to determine whether the query results were modified, deleted, or unchanged after CloudTrail delivered
+    <h1>Trails</h1>
+    <h2>Create a trail</h2>
+    <p>A trail enables CloudTrail to deliver log files to your Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to all Regions. The trail logs events from all Regions in the AWS partition and delivers the log files to the S3 bucket that you specify. For more information, see <a href="link_to_creating_trail">Creating a trail for your AWS account</a>.</p>
+    <h2>Log management and data events</h2>
+    <p>Configure your trails to log read-only, write-only, or all management and data events. By default, trails log management events. For more information, see <a href="link_to_logging_management_events">Logging management events</a> and <a href="link_to_logging_data_events">Logging data events</a>.</p>
+    <h2>Log Insights events</h2>
+    <p>Configure your trails to log Insights events to help you identify and respond to unusual activity associated with management API calls. For more information, see <a href="link_to_logging_insights_events">Logging Insights events</a>.</p>
+    <h2>Additional charges apply for Insights events</h2>
+    <p>You will be charged separately if you enable Insights for both trails and event data stores. For more information, see <a href="link_to_cloudtrail_pricing">AWS CloudTrail Pricing</a>.</p>
+    <h2>View Insights events</h2>
+    <p>After you enable CloudTrail Insights on a trail, you can view up to 90 days of Insights events by using the CloudTrail console or the AWS CLI. For more information, see <a href="link_to_view_insights_events">Viewing CloudTrail Insights events for trails</a>.</p>
+    <h2>Download Insights events</h2>
+    <p>After you enable CloudTrail Insights on a trail, you can download a CSV or JSON file containing up to the past 90 days of Insights events for your trail. For more information, see <a href="link_to_downloading_insights_events">Downloading Insights events</a>.</p>
+    <h2>Copy trail events to CloudTrail Lake</h2>
+    <p>You can copy existing trail events to a CloudTrail Lake event data store to create a point-in-time snapshot of events logged to the trail. For more information, see <a href="link_to_copying_trail_events">Copying trail events to CloudTrail Lake</a>.</p>
+    <h2>Create and subscribe to an Amazon SNS topic</h2>
+    <p>Subscribe to a topic to receive notifications about log file delivery to your bucket. Amazon SNS can notify you in multiple ways, including programmatically with Amazon Simple Queue Service. For information, see <a href="link_to_configuring_sns">Configuring Amazon SNS notifications for CloudTrail</a>.</p>
+    <h2>View your log files</h2>
+    <p>Use Amazon S3 to retrieve log files. For information, see <a href="link_to_getting_log_files">Getting and viewing your CloudTrail log files</a>.</p>
+    <h2>Monitor events with CloudWatch Logs</h2>
+    <p>You can configure your trail to send events to CloudWatch Logs. You can then use CloudWatch Logs to monitor your account for specific API calls and events. For more information, see <a href="link_to_monitoring_events">Monitoring CloudTrail Log Files with Amazon CloudWatch Logs</a>.</p>
+    <h2>Enable log encryption</h2>
+    <p>Log file encryption provides an extra layer of security for your log files. For more information, see <a href="link_to_encrypting_logs">Encrypting CloudTrail log files with AWS KMS keys (SSE-KMS)</a>.</p>
+    <h2>Enable log file integrity</h2>
+    <p>Log file integrity validation helps you verify that log files have remained unchanged since CloudTrail delivered them. For more information, see <a href="link_to_validating_integrity">Validating CloudTrail log file integrity</a>.</p>
+    <h2>Share log files with other AWS accounts</h2>
+    <p>You can share log files between accounts. For more information, see <a href="link_to_sharing_log_files">Sharing CloudTrail log files between AWS accounts</a>.</p>
+    <h2>Aggregate logs from multiple accounts</h2>
+    <p>You can aggregate log files from multiple accounts to a single bucket. For more information, see <a href="link_to_aggregating_logs">Receiving CloudTrail log files from multiple accounts</a>.</p>
+    <h2>Manage user permissions</h2>
+    <p>Use AWS Identity and Access Management (IAM) to manage which users have permissions to create, configure, or delete trails; start and stop logging; and access buckets that have log files. For more information, see <a href="link_to_iam_permissions">Granting permissions for CloudTrail administration</a>.</p>
+    <h2>Register a delegated administrator</h2>
+    <p>You can register a
+  
+    <h1>What are CloudTrail events?</h1>
+    <p>An event in CloudTrail is the record of an activity in an AWS account. This activity can be an action taken by an IAM identity or service that is monitorable by CloudTrail. CloudTrail events provide a history of both API and non-API account activity made through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. There are three types of events that can be logged in CloudTrail: management events, data events, and CloudTrail Insights events. By default, trails and event data stores log management events, but not data or Insights events.</p>
+  <p>All event types use a CloudTrail JSON log format.</p>
+  <p>For information about AWS services integrated with CloudTrail, see <a href="link_to_aws_service_topics">AWS service topics for CloudTrail</a>.</p>
+  <h1>Management Events</h1>
+  <p>Management events provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations.</p>
+  <p>Example management events include:</p>
+  <ul>
+    <li>Configuring security (for example, AWS Identity and Access Management AttachRolePolicy API operations).</li>
+    <li>Registering devices (for example, Amazon EC2 CreateDefaultVpc API operations).</li>
+    <li>Configuring rules for routing data (for example, Amazon EC2 CreateSubnet API operations).</li>
+    <li>Setting up logging (for example, AWS CloudTrail CreateTrail API operations).</li>
+  </ul>
+  <p>Management events can also include non-API events that occur in your account. For example, when a user signs in to your account, CloudTrail logs the ConsoleLogin event. For more information, see <a href="link_to_non_api_events">Non-API events captured by CloudTrail</a>. For a list of management events that CloudTrail logs for AWS services, see <a href="link_to_supported_services">CloudTrail supported services and integrations</a>.</p>
+<h1>Prerequisites</h1>
+<p>This section provides general information about how to set up an AWS account and describes the managed policies available for CloudTrail.</p>
+<h1>Sign Up for an AWS Account</h1>
+<p>If you do not have an AWS account, complete the following steps to create one.</p>
+<h2>To sign up for an AWS account:</h2>
+<ol>
+  <li>Open <a href="https://portal.aws.amazon.com/billing/signup">https://portal.aws.amazon.com/billing/signup</a>.</li>
+  <li>Follow the online instructions.</li>
+  <li>Part of the sign-up procedure involves receiving a phone call and entering a verification code on the phone keypad.</li>
+</ol>
+<p>When you sign up for an AWS account, an AWS account root user is created. The root user has access to all AWS services and resources in the account. As a security best practice, assign administrative access to an administrative user, and use only the root user to perform tasks that require root user access.</p>
+<p>AWS sends you a confirmation email after the sign-up process is complete. At any time, you can view your current account activity and manage your account by going to <a href="https://aws.amazon.com/">https://aws.amazon.com/</a> and choosing My Account.</p>
+<h2>Secure your AWS account root user</h2>
+  <p>Sign in to the AWS Management Console as the account owner by choosing Root user and entering your AWS account email address. On the next page, enter your password.</p>
+  <p>For help signing in by using root user, see <a href="link_to_sign_in_guide">Signing in as the root user</a> in the AWS Sign-In User Guide.</p>
+  <p>Turn on multi-factor authentication (MFA) for your root user.</p>
+  <p>For instructions, see <a href="link_to_enable_mfa_guide">Enable a virtual MFA device for your AWS account root user (console)</a> in the IAM User Guide.</p>
+  <h2>Create an Administrative User</h2>
+  <p>Enable IAM Identity Center.</p>
+  <p>For instructions, see <a href="link_to_enable_iam_identity_center_guide">Enabling AWS IAM Identity Center</a> in the AWS IAM Identity Center User Guide.</p>
+  <p>In IAM Identity Center, grant administrative access to an administrative user.</p>
+  <p>For a tutorial about using the IAM Identity Center directory as your identity source, see <a href="link_to_configure_user_access_guide">Configure user access with the default IAM Identity Center directory</a> in the AWS IAM Identity Center User Guide.</p>
+  <h2>Sign in as the Administrative User</h2>
+  <p>To sign in with your IAM Identity Center user, use the sign-in URL that was sent to your email address when you created the IAM Identity Center user.</p>
+  <p>For help signing in using an IAM Identity Center user, see <a href="link_to_sign_in_aws_access_portal_guide">Signing in to the AWS access portal</a> in the AWS Sign-In User Guide.</p>
+  <h2>Grant Permissions to Use CloudTrail</h2>
+  <p>To create, update, and manage CloudTrail resources like trails, event data stores, and channels, you need to grant permissions to use CloudTrail.</p>
+  <p>Note: The permissions you grant to users to perform CloudTrail administration tasks aren't the same as the permissions that CloudTrail requires to deliver log files to Amazon S3 buckets or send notifications to Amazon SNS topics. For more information about those permissions, see <a href="link_to_cloudtrail_permissions_guide">Amazon S3 bucket policy for CloudTrail</a>.</p>
+  <p>If you configure integration with Amazon CloudWatch Logs, CloudTrail also requires a role that it can assume to deliver events to an Amazon CloudWatch Logs log group. You must create the role that CloudTrail uses. For more information, see <a href="link_to_cloudwatch_logs_guide">Granting permission to view and configure Amazon CloudWatch Logs information on the CloudTrail console</a> and <a href="link_to_sending_events_to_cloudwatch_logs_guide">Sending events to CloudWatch Logs</a>.</p>
+  <h1>AWSCloudTrail_ReadOnlyAccess Policy</h1>
+  <p>This policy grants permissions to view the CloudTrail console, including recent events and event history. It also allows you to view existing trails, event data stores, and channels. Roles and users with this policy can download the event history, but they can't create or update trails, event data stores, or channels.</p>
+  <h2>To provide access:</h2>
+  <h3>Users and groups in AWS IAM Identity Center:</h3>
+  <ul>
+    <li>Create a permission set. Follow the instructions in <a href="link_to_create_permission_set_guide">Create a permission set</a> in the AWS IAM Identity Center User Guide.</li>
+  </ul>
+  <h3>Users managed in IAM through an identity provider:</h3>
+  <ul>
+    <li>Create a role for identity federation. Follow the instructions in <a href="link_to_create_role_for_federation_guide">Creating a role for a third-party identity provider (federation)</a> in the IAM User Guide.</li>
+  </ul>
+  <h3>IAM users:</h3>
+  <ul>
+    <li>Create a role that your user can assume. Follow the instructions in <a href="link_to_create_role_for_iam_user_guide">Creating a role for an IAM user</a> in the IAM User Guide.</li>
+    <li>(Not recommended) Attach a policy directly to a user or add a user to a user group. Follow the instructions in <a href="link_to_add_permissions_to_user_guide">Adding permissions to a user (console)</a> in the IAM User Guide.</li>
+  </ul>
+  
+  
+</section>
+
+<section>
+    <h1>CloudTrail supported Regions</h1>
+    <h2>Note</h2>
+  <p>For information about Regions supported by CloudTrail Lake, see <a href="link_to_cloudtrail_lake_supported_regions">CloudTrail Lake supported Regions</a>.</p>
+  <p>For information about data plane endpoints, see <a href="link_to_data_plane_endpoints">Data plane endpoints</a> in the AWS General Reference.</p>
+  <h1>CloudTrail Supported Regions</h1>
+  <table>
+    <tr>
+      <th>Region Name</th>
+      <th>Region</th>
+      <th>Control Plane Endpoint</th>
+      <th>Protocol</th>
+      <th>Support Date</th>
+    </tr>
+    <tr>
+      <td>US East (N. Virginia)</td>
+      <td>us-east-1</td>
+      <td>cloudtrail.us-east-1.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>11/13/2013</td>
+    </tr>
+    <tr>
+      <td>US East (Ohio)</td>
+      <td>us-east-2</td>
+      <td>cloudtrail.us-east-2.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>10/17/2016</td>
+    </tr>
+    <tr>
+      <td>US West (N. California)</td>
+      <td>us-west-1</td>
+      <td>cloudtrail.us-west-1.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>05/13/2014</td>
+    </tr>
+    <tr>
+      <td>US West (Oregon)</td>
+      <td>us-west-2</td>
+      <td>cloudtrail.us-west-2.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>11/13/2013</td>
+    </tr>
+    <tr>
+      <td>Canada (Central)</td>
+      <td>ca-central-1</td>
+      <td>cloudtrail.ca-central-1.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>12/08/2016</td>
+    </tr>
+    <tr>
+      <td>Canada West (Calgary)</td>
+      <td>ca-west-1</td>
+      <td>cloudtrail.ca-west-1.amazonaws.com</td>
+      <td>HTTPS</td>
+      <td>12/20/2023</td>
+    </tr>
+      <tr>
+        <td>Africa (Cape Town)</td>
+        <td>af-south-1</td>
+        <td>cloudtrail.af-south-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>04/22/2020</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Hong Kong)</td>
+        <td>ap-east-1</td>
+        <td>cloudtrail.ap-east-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>04/24/2019</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Mumbai)</td>
+        <td>ap-south-1</td>
+        <td>cloudtrail.ap-south-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>06/27/2016</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Hyderabad)</td>
+        <td>ap-south-2</td>
+        <td>cloudtrail.ap-south-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>11/22/2022</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Tokyo)</td>
+        <td>ap-northeast-1</td>
+        <td>cloudtrail.ap-northeast-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>06/30/2014</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Seoul)</td>
+        <td>ap-northeast-2</td>
+        <td>cloudtrail.ap-northeast-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>01/06/2016</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Osaka)</td>
+        <td>ap-northeast-3</td>
+        <td>cloudtrail.ap-northeast-3.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>02/12/2018</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Singapore)</td>
+        <td>ap-southeast-1</td>
+        <td>cloudtrail.ap-southeast-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>06/30/2014</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Sydney)</td>
+        <td>ap-southeast-2</td>
+        <td>cloudtrail.ap-southeast-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>05/13/2014</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Jakarta)</td>
+        <td>ap-southeast-3</td>
+        <td>cloudtrail.ap-southeast-3.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>12/13/2021</td>
+      </tr>
+      <tr>
+        <td>Asia Pacific (Melbourne)</td>
+        <td>ap-southeast-4</td>
+        <td>cloudtrail.ap-southeast-4.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>01/23/2023</td>
+      </tr>
+      <tr>
+        <td>China (Beijing)</td>
+        <td>cn-north-1</td>
+        <td>cloudtrail.cn-north-1.amazonaws.com.cn</td>
+        <td>HTTPS</td>
+        <td>03/01/2014</td>
+      </tr>
+      <tr>
+        <td>China (Ningxia)</td>
+        <td>cn-northwest-1</td>
+        <td>cloudtrail.cn-northwest-1.amazonaws.com.cn</td>
+        <td>HTTPS</td>
+        <td>12/11/2017</td>
+      </tr>
+      <tr>
+        <td>Europe (Frankfurt)</td>
+        <td>eu-central-1</td>
+        <td>cloudtrail.eu-central-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>10/23/2014</td>
+      </tr>
+      <tr>
+        <td>Europe (Zurich)</td>
+        <td>eu-central-2</td>
+        <td>cloudtrail.eu-central-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>11/09/2022</td>
+      </tr>
+      <tr>
+        <td>Europe (Stockholm)</td>
+        <td>eu-north-1</td>
+        <td>cloudtrail.eu-north-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>12/11/2018</td>
+      </tr>
+      <tr>
+        <td>Europe (Ireland)</td>
+        <td>eu-west-1</td>
+        <td>cloudtrail.eu-west-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>05/13/2014</td>
+      </tr>
+      <tr>
+        <td>Europe (London)</td>
+        <td>eu-west-2</td>
+        <td>cloudtrail.eu-west-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>12/13/2016</td>
+      </tr>
+      <tr>
+        <td>Europe (Paris)</td>
+        <td>eu-west-3</td>
+        <td>cloudtrail.eu-west-3.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>12/18/2017</td>
+      </tr>
+      <tr>
+        <td>Europe (Milan)</td>
+        <td>eu-south-1</td>
+        <td>cloudtrail.eu-south-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>04/27/2020</td>
+      </tr>
+      <tr>
+        <td>Europe (Spain)</td>
+        <td>eu-south-2</td>
+        <td>cloudtrail.eu-south-2.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>11/16/2022</td>
+      </tr>
+      <tr>
+        <td>Israel (Tel Aviv)</td>
+        <td>il-central-1</td>
+        <td>cloudtrail.il-central-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>07/31/2023</td>
+      </tr>
+      <tr>
+        <td>Middle East (UAE)</td>
+        <td>me-central-1</td>
+        <td>cloudtrail.me-central-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>08/30/2022</td>
+      </tr>
+      <tr>
+        <td>Middle East (Bahrain)</td>
+        <td>me-south-1</td>
+        <td>cloudtrail.me-south-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>07/29/2019</td>
+      </tr>
+      <tr>
+        <td>AWS GovCloud (US-East)</td>
+        <td>us-gov-east-1</td>
+        <td>cloudtrail.us-gov-east-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>11/12/2018</td>
+      </tr>
+      <tr>
+        <td>AWS GovCloud (US-West)</td>
+        <td>us-gov-west-1</td>
+        <td>cloudtrail.us-gov-west-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>08/16/2011</td>
+      </tr>
+      <tr>
+        <td>South America (São Paulo)</td>
+        <td>sa-east-1</td>
+        <td>cloudtrail.sa-east-1.amazonaws.com</td>
+        <td>HTTPS</td>
+        <td>06/30/2014</td>
+      </tr>
+
+  </table>
+
+</section>
+
+<section>
+    <h1>CloudTrail log file examples</h1>
+    
+    <p>CloudTrail monitors events for your account. If you create a trail, it delivers those events as log files to your Amazon S3 bucket. If you create an event data store in CloudTrail Lake, events are logged to your event data store. Event data stores do not use S3 buckets.</p>
+    <p>CloudTrail uses the following file name format for the log file objects that it delivers to your Amazon S3 bucket:</p>
+    <pre>
+      AccountID_CloudTrail_RegionName_YYYYMMDDTHHmmZ_UniqueString.FileNameFormat
+    </pre>
+    <p>The YYYY, MM, DD, HH, and mm are the digits of the year, month, day, hour, and minute when the log file was delivered. Hours are in 24-hour format. The Z indicates that the time is in UTC.</p>
+    <p>The 16-character UniqueString component of the log file name is there to prevent overwriting of files. It has no meaning, and log processing software should ignore it.</p>
+    <p>FileNameFormat is the encoding of the file. Currently, this is json.gz, which is a JSON text file in compressed gzip format.</p>
+    <h2>Example CloudTrail Log File Name:</h2>
+    <pre>
+        111122223333_CloudTrail_us-east-2_20150801T0210Z_Mu0KsOhtH1ar15ZZ.json.gz
+   </pre>
+</section>

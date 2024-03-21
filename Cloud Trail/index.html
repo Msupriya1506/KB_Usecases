@@ -408,6 +408,13 @@
     <h1>CloudTrail log file examples</h1>
     
     <p>CloudTrail monitors events for your account. If you create a trail, it delivers those events as log files to your Amazon S3 bucket. If you create an event data store in CloudTrail Lake, events are logged to your event data store. Event data stores do not use S3 buckets.</p>
+    <ul>
+    <li>CloudTrail log file name format</li>
+    <li>Log file examples </li>
+    </ul>
+  </section>
+
+  <section>
     <h1>CloudTrail log file name format</h1>
     <p>CloudTrail uses the following file name format for the log file objects that it delivers to your Amazon S3 bucket:</p>
     <pre>
@@ -420,16 +427,18 @@
     <pre>
         111122223333_CloudTrail_us-east-2_20150801T0210Z_Mu0KsOhtH1ar15ZZ.json.gz
    </pre>
+  </section>
 
+  <section>
    <h1>Log file examples</h1>
    <P>A log file contains one or more records. The following examples are snippets of logs that show the records for an action that started the creation of a log file.</P>
    <h1>Contents</h1>
-   <ol>
+   <ul>
    <li>Amazon EC2 log examples</li>
   <li>IAM log examples</li>
   <li>Error code and message log example</li>
   <li>CloudTrail Insights event log example</li>
-  </ol>
+  </ul>
 
    <h1>1. Amazon EC2 log examples</h1>
    <p>Amazon EC2 provides resizeable computing capacity in the AWS Cloud. You can launch virtual servers, configure security and networking, and manage storage. EC2 can also scale up or down quickly to handle changes in requirements or spikes in popularity, reducing the need to forecast server traffic.</p>

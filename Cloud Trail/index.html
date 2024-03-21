@@ -38,13 +38,6 @@
           margin-bottom: 10px;
       }
   
-      code {
-          display: block;
-          background-color: #f4f4f4;
-          padding: 10px;
-          margin-bottom: 15px;
-      }
-  
       .or {
           font-weight: bold;
           margin: 0 10px; /* Adjusted margin */
@@ -77,6 +70,10 @@
           text-align: left;
           padding: 8px;
       }
+
+      th {
+            background-color: #f2f2f2;
+        }
   
       dl {
           margin-bottom: 20px;
@@ -144,200 +141,24 @@
     </div>
     <section>
         <h1>AWS CloudTrail</h1>
-  <p>AWS CloudTrail is an AWS service that helps you enable operational and risk auditing, governance, and compliance of your AWS account. Actions taken by a user, role, or an AWS service are recorded as events in CloudTrail. Events include actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.</p>
-  <p>CloudTrail is active in your AWS account when you create it and doesn't require any manual setup. When activity occurs in your AWS account, that activity is recorded in a CloudTrail event.</p>
-  <p>CloudTrail provides three ways to record events:</p>
-  <ul>
-    <li><strong>Event history:</strong><p>The Event history provides a viewable, searchable, downloadable, and immutable record of the past 90 days of management events in an AWS Region. You can search events by filtering on a single attribute. You automatically have access to the Event history when you create your account. For more information, see Working with CloudTrail Event history.</li></p>
-    <li><strong>CloudTrail Lake:</strong><p>AWS CloudTrail Lake is a managed data lake for capturing, storing, accessing, and analyzing user and API activity on AWS for audit and security purposes. CloudTrail Lake converts existing events in row-based JSON format to Apache ORC format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option. You can create an event data store for a single AWS account or for multiple AWS accounts by using AWS Organizations. You can import any existing CloudTrail logs from your S3 buckets into an existing or new event data store. You can also visualize top CloudTrail event trends with Lake dashboards. For more information, see Working with AWS CloudTrail Lake and Create an event data store.</p>
-        <p>CloudTrail Lake event data stores and queries incur charges. When you create an event data store, you choose the pricing option you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. When you run queries in Lake, you pay based upon the amount of data scanned. For information about CloudTrail pricing and managing Lake costs, see AWS CloudTrail Pricing and Managing CloudTrail Lake costs.</p></li>
-    <li><strong>Trails:</strong> <p>Trails capture a record of AWS activities, delivering and storing these events in an Amazon S3 bucket, with optional delivery to Amazon CloudWatch Logs and Amazon EventBridge. You can input these events into your security monitoring solutions. You can also use your own third-party solutions or solutions such as Amazon Athena to search and analyze your CloudTrail logs. You can create trails for a single AWS account or for multiple AWS accounts by using AWS Organizations. You can log Insights events to analyze your management events for anomalous behavior in API call volumes and error rates. For more information, see Creating a trail for your AWS account.</p>
-        <p>You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see AWS CloudTrail Pricing. For information about Amazon S3 pricing, see Amazon S3 Pricing.</p>
-        <p>Visibility into your AWS account activity is a key aspect of security and operational best practices. You can use CloudTrail to view, search, download, archive, analyze, and respond to account activity across your AWS infrastructure. You can identify who or what took which action, what resources were acted upon, when the event occurred, and other details to help you analyze and respond to activity in your AWS account.</p>
-        <p>You can integrate CloudTrail into applications using the API, automate trail or event data store creation for your organization, check the status of event data stores and trails you create, and control how users view CloudTrail events.</p>
-    </li>
-  </ul>
-    </section>
-
-    <section>
+        <p>AWS CloudTrail is a service for auditing and monitoring AWS account activity, including actions performed by users, roles, or services. It records events such as actions in the AWS Management Console, AWS CLI, and APIs.</p>
+        <p>CloudTrail offers three ways to record events:</p>
+        <ol>
+          <li><strong>Event history:</strong><p> Provides a searchable, downloadable record of the past 90 days of management events in an AWS Region.</p>
+        
+          <li><strong>CloudTrail Lake:</strong><p> A managed data lake for capturing, storing, and analyzing user and API activity on AWS. It converts events to Apache ORC format for efficient retrieval and offers extended retention options.</p>
+        
+          <li><strong>Trails:</strong> <p> Capture and store AWS activities in an Amazon S3 bucket, optionally delivering them to CloudWatch Logs or EventBridge. Trails can be configured for single or multiple AWS accounts.</p>
+        </ol>
+        <p>CloudTrail enables visibility into AWS account activity, aiding in security and compliance efforts. It helps identify actions, resources affected, timing, and more, facilitating analysis and response to account activity.</p>
+          </section>
+    
+        <section>
         <h1>How CloudTrail works</h1>
         <p>CloudTrail is active in your AWS account when you create it. When activity occurs in your AWS account, that activity is recorded in a CloudTrail event. You can view the past 90 days of recorded API activity (management events) in an AWS Region in the CloudTrail console by going to Event history.</p>
   <p>For an ongoing record of events in your AWS account, create an event data store or a trail. Trails can log events for CloudTrail management, data, and Insights events. Event data stores can log CloudTrail management and data events, CloudTrail Insights events, AWS Config configuration items, AWS Audit Manager evidence, and non-AWS events from integrations.</p>
-  <p>To get started with CloudTrail, see Getting started with AWS CloudTrail tutorials.</p>
-  <p>For CloudTrail pricing, see AWS CloudTrail Pricing. For Amazon S3 and Amazon SNS pricing, see Amazon S3 Pricing and Amazon SNS Pricing.</p>
-
-  <h1>Event history</h1>
-  <p>The Event history provides a viewable, searchable, downloadable, and immutable record of the past 90 days of recorded management events in an AWS Region. You can easily view management events in the CloudTrail console by going to the Event history page. You can also view the event history by running the aws cloudtrail lookup-events command, or the LookupEvents API operation. You can search events in Event history by filtering for events on a single attribute. For more information, see Working with CloudTrail Event history.</p>
-  <p>The Event history is not connected to any trails or event data stores that exist in your account and is not affected by configuration changes you make to your trails and event data stores.</p>
-
-  <h1>CloudTrail Lake and event data stores</h1>
-  <p>You can create a CloudTrail Lake event data store to archive, analyze, and respond to changes in your AWS resources. CloudTrail Lake converts existing events in row-based JSON format to Apache ORC format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option.</p>
-  <p>You can create an event data store to collect CloudTrail management and data events, CloudTrail Insights events, AWS Config configuration items, AWS Audit Manager evidence, or non-AWS events. You can create event data stores using the console, the AWS CLI, or the CloudTrail API. For more information about creating event data stores using the console, see Create an event data store. For more information about creating event data stores using the AWS CLI, see Managing CloudTrail Lake by using the AWS CLI.</p>
-  <p>CloudTrail Lake lets you log events from applications outside of AWS, including from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers by creating integrations. You can create integrations with more than 12 partners to log events that occur outside AWS to your event data stores. To create an integration, you first configure a channel over which events are delivered. You can use CloudTrail Lake to store, access, analyze, troubleshoot and take action on this data without maintaining multiple log aggregators and reporting tools.</p>
-  <p>Event data stores can log events from the current AWS Region, or from all AWS Regions in your AWS account. Event data stores that you are using to log Integration events from outside AWS must be for a single Region only; they cannot be multi-Region event data stores.</p>
-  <p>To change an event data store after you create it, you can run the update-event-data-store command, or use the CloudTrail Lake console.</p>
-  <p>If you have created an organization in AWS Organizations, you can create an organization event data store that logs all events for all AWS accounts in that organization. Organization event data stores can apply to all AWS Regions, or the current Region. Organization event data stores must be created using the management account or delegated administrator account, and when specified as applying to an organization, are automatically applied to all member accounts in the organization. Member accounts cannot see the organization event data store, nor can they modify or delete it. By default, member accounts do not have access to the log files for an organization event data store, nor can they run queries on organization event data stores. Organization event data stores cannot be used to collect events from outside of AWS. For more information, see Organization event data stores.</p>
-
-  <h1>CloudTrail trails</h1>
-  <p>You can also create a CloudTrail trail to archive, analyze, and respond to changes in your AWS resources. Trails can log CloudTrail management events, data events, and Insights events.</p>
-  <p>A trail is a configuration that enables delivery of events to an Amazon S3 bucket that you specify. You can also deliver and analyze events in a trail with Amazon CloudWatch Logs and Amazon EventBridge. You can create trails with the CloudTrail console, the AWS CLI, or the CloudTrail API.</p>
-  <h2>Types of Trails</h2>
-  <ul>
-    <li>A trail that applies to all Regions</li>
-    <li>A trail that applies to one Region</li>
-  </ul>
-  <p>For both types of trails, you can specify an Amazon S3 bucket from any Region.</p>
-  <p>Beginning on April 12, 2019, trails are viewable only in the AWS Regions where they log events. If you create a trail that logs events in all AWS Regions, it will appear in the console in all AWS Regions. If you create a trail that only logs events in a single AWS Region, you can view and manage it only in that AWS Region.</p>
-  <p>If you have created an organization in AWS Organizations, you can create an organization trail that logs all events for all AWS accounts in that organization. Organization trails can apply to all AWS Regions, or the current Region. Organization trails must be created using the management account or delegated administrator account, and when specified as applying to an organization, are automatically applied to all member accounts in the organization. Member accounts can see the organization trail, but cannot modify or delete it.</p>
-  <p>You can change the configuration of a trail after you create it, including whether it logs events in one Region or all Regions.</p>
-  <p>By default, CloudTrail event log files from trails are encrypted using Amazon S3 server-side encryption (SSE). You can also choose to encrypt your log files with an AWS Key Management Service (AWS KMS) key. You can store your log files in your bucket for as long as you want. You can also define Amazon S3 lifecycle rules to archive or delete log files automatically. If you want notifications about log file delivery and validation, you can set up Amazon SNS notifications.</p>
-  <p>CloudTrail publishes log files multiple times an hour, about every 5 minutes. These log files contain API calls from services in the account that support CloudTrail.</p>
-
-  <h1>CloudTrail channels</h1>
-  <p>CloudTrail supports two types of channels:</p>
-  <h2>Channels for CloudTrail Lake Integrations with External Event Sources</h2>
-  <p>CloudTrail Lake uses channels to bring non-AWS events into CloudTrail Lake from external partners that work with CloudTrail, or from your own sources. When you create a channel, you choose one or more event data stores to store events that arrive from the channel source. You can change the destination event data stores for a channel as needed, as long as the destination event data stores are set to log activity events. When you create a channel for events from an external partner, you provide a channel ARN to the partner or source application. The resource policy attached to the channel allows the source to transmit events through the channel. For more information, see <a href="link_to_create_integration">Create an integration with an event source outside of AWS</a> and <a href="link_to_create_channel_api">CreateChannel in the AWS CloudTrail API Reference</a>.</p>
-  <h2>Service-linked Channels</h2>
-  <p>AWS services can create a service-linked channel to receive CloudTrail events on your behalf. The AWS service creating the service-linked channel configures advanced event selectors for the channel and specifies whether the channel applies to all Regions, or a single Region.</p>
-  <p>You can use the CloudTrail console or AWS CLI to view information about any CloudTrail service-linked channels created by AWS services.</p>
-
-
-<h1>CloudTrail workflow</h1>
-<h2>View event history for your AWS account</h2>
-  <p>You can view and search the last 90 days of events recorded by CloudTrail in the CloudTrail console or by using the AWS CLI. For more information, see <a href="link_to_event_history_guide">Working with CloudTrail Event history</a>.</p>
-  <h2>Download events</h2>
-  <p>You can download a CSV or JSON file containing up to the past 90 days of CloudTrail events for your AWS account. For more information, see <a href="link_to_downloading_events_guide">Downloading events</a>.</p>
-  <h2>Enable CloudTrail Lake</h2>
-  <p>CloudTrail Lake lets you run fine-grained SQL-based queries on events from both AWS sources, and sources outside of AWS. Events are aggregated into event data stores, which are immutable collections of events based on criteria that you select by applying advanced event selectors. You can keep the event data in an event data store for up to 3,653 days (about 10 years) if you choose the One-year extendable retention pricing option, or up to 2,557 days (about 7 years) if you choose the Seven-year retention pricing option. CloudTrail Lake is part of an auditing solution that helps you perform security investigations and troubleshooting. For more information, see <a href="link_to_working_with_cloudtrail_lake">Working with AWS CloudTrail Lake</a>.</p>
-  <h2>Create an event data store</h2>
-  <p>When you create an event data store in CloudTrail Lake, you choose the type of events to include in your event data store. For more information, see <a href="link_to_create_event_data_store">Create an event data store</a>.</p>
-  <h2>View Lake dashboards</h2>
-  <p>You can use CloudTrail Lake dashboards to visualize the events in an event data store. You can select from several different dashboard types. For more information, see <a href="link_to_view_lake_dashboards">View Lake dashboards</a>.</p>
-  <h2>Log management and data events</h2>
-  <p>Configure your event data stores to log read-only, write-only, or all management and data events. By default, event data stores log management events. For more information, see <a href="link_to_logging_management_events">Logging management events</a> and <a href="link_to_logging_data_events">Logging data events</a>.</p>
-  <h2>Log Insights events</h2>
-  <p>Configure your event data stores to log Insights events to help you identify and respond to unusual activity associated with management API calls. For more information, see <a href="link_to_create_insights_event_data_store">Create an event data store for CloudTrail Insights events</a> and <a href="link_to_logging_insights_events">Logging Insights events</a>.</p>
-  <h2>Copy trail events to CloudTrail Lake</h2>
-  <p>You can copy existing trail events to a CloudTrail Lake event data store to create a point-in-time snapshot of events logged to the trail. For more information, see <a href="link_to_copy_trail_events">Copy trail events to an event data store</a>.</p>
-  <h2>Enable federation on an event data store</h2>
-  <p>You can federate an event data store to see the metadata associated with the event data store in the AWS Glue Data Catalog and run SQL queries on the event data using Amazon Athena. The table metadata stored in the AWS Glue Data Catalog lets the Athena query engine know how to find, read, and process the data that you want to query. For more information, see <a href="link_to_enable_federation">Federate an event data store</a>.</p>
-  <h2>Stop or start event ingestion on an event data store</h2>
-  <p>You can stop and start event ingestion on event data stores that collect CloudTrail management and data events, or AWS Config configuration items. For more information about how to stop event ingestion in the CloudTrail console, see <a href="link_to_stop_ingestion_console">Stop and start event ingestion</a>. For more information about how to stop event ingestion by using the AWS CLI, see <a href="link_to_stop_ingestion_cli">Stop ingestion on an event data store with the AWS CLI</a>.</p>
-  <h2>Create an integration with an event source outside of AWS</h2>
-  <p>You can use CloudTrail Lake integrations to log and store user activity data from outside of AWS; from any source in your hybrid environments, such as in-house or SaaS applications hosted on-premises or in the cloud, virtual machines, or containers. For information about creating an integration in the CloudTrail console, see <a href="link_to_create_integration_console">Create an integration with an event source outside of AWS</a>. For information about creating an integration by using the AWS CLI, see <a href="link_to_create_integration_cli">Create an integration to log events from outside AWS with the AWS CLI</a>.</p>
-  <h2>View Lake sample queries in the CloudTrail console</h2>
-  <p>The CloudTrail console provides a number of sample queries that can help you get started writing your own queries. For more information, see <a href="link_to_view_sample_queries">Viewing sample queries in the CloudTrail console</a>.</p>
-  <h2>Create or edit a query</h2>
-  <p>Queries in CloudTrail are authored in SQL. You can build a query on the CloudTrail Lake Editor tab by writing the query in SQL from scratch, or by opening a saved or sample query and editing it. For more information, see <a href="link_to_create_edit_query">Create or edit a query</a> and <a href="link_to_sql_constraints">CloudTrail Lake SQL constraints</a>.</p>
-  <h2>Save CloudTrail Lake query results to an Amazon S3 bucket</h2>
-  <p>When you run a query, you can save the query results to an S3 bucket. For more information, see <a href="link_to_save_query_results">Run a query and save query results</a>.</p>
-  <h2>Download saved query results</h2>
-  <p>You can download a CSV file containing your saved CloudTrail Lake query results. For more information, see <a href="link_to_download_saved_query_results">Download your CloudTrail Lake saved query results</a>.</p>
-  <h2>Validate saved query results</h2>
-  <p>You can use CloudTrail query results integrity validation to determine whether the query results were modified, deleted, or unchanged after CloudTrail delivered
-    <h1>Trails</h1>
-    <h2>Create a trail</h2>
-    <p>A trail enables CloudTrail to deliver log files to your Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to all Regions. The trail logs events from all Regions in the AWS partition and delivers the log files to the S3 bucket that you specify. For more information, see <a href="link_to_creating_trail">Creating a trail for your AWS account</a>.</p>
-    <h2>Log management and data events</h2>
-    <p>Configure your trails to log read-only, write-only, or all management and data events. By default, trails log management events. For more information, see <a href="link_to_logging_management_events">Logging management events</a> and <a href="link_to_logging_data_events">Logging data events</a>.</p>
-    <h2>Log Insights events</h2>
-    <p>Configure your trails to log Insights events to help you identify and respond to unusual activity associated with management API calls. For more information, see <a href="link_to_logging_insights_events">Logging Insights events</a>.</p>
-    <h2>Additional charges apply for Insights events</h2>
-    <p>You will be charged separately if you enable Insights for both trails and event data stores. For more information, see <a href="link_to_cloudtrail_pricing">AWS CloudTrail Pricing</a>.</p>
-    <h2>View Insights events</h2>
-    <p>After you enable CloudTrail Insights on a trail, you can view up to 90 days of Insights events by using the CloudTrail console or the AWS CLI. For more information, see <a href="link_to_view_insights_events">Viewing CloudTrail Insights events for trails</a>.</p>
-    <h2>Download Insights events</h2>
-    <p>After you enable CloudTrail Insights on a trail, you can download a CSV or JSON file containing up to the past 90 days of Insights events for your trail. For more information, see <a href="link_to_downloading_insights_events">Downloading Insights events</a>.</p>
-    <h2>Copy trail events to CloudTrail Lake</h2>
-    <p>You can copy existing trail events to a CloudTrail Lake event data store to create a point-in-time snapshot of events logged to the trail. For more information, see <a href="link_to_copying_trail_events">Copying trail events to CloudTrail Lake</a>.</p>
-    <h2>Create and subscribe to an Amazon SNS topic</h2>
-    <p>Subscribe to a topic to receive notifications about log file delivery to your bucket. Amazon SNS can notify you in multiple ways, including programmatically with Amazon Simple Queue Service. For information, see <a href="link_to_configuring_sns">Configuring Amazon SNS notifications for CloudTrail</a>.</p>
-    <h2>View your log files</h2>
-    <p>Use Amazon S3 to retrieve log files. For information, see <a href="link_to_getting_log_files">Getting and viewing your CloudTrail log files</a>.</p>
-    <h2>Monitor events with CloudWatch Logs</h2>
-    <p>You can configure your trail to send events to CloudWatch Logs. You can then use CloudWatch Logs to monitor your account for specific API calls and events. For more information, see <a href="link_to_monitoring_events">Monitoring CloudTrail Log Files with Amazon CloudWatch Logs</a>.</p>
-    <h2>Enable log encryption</h2>
-    <p>Log file encryption provides an extra layer of security for your log files. For more information, see <a href="link_to_encrypting_logs">Encrypting CloudTrail log files with AWS KMS keys (SSE-KMS)</a>.</p>
-    <h2>Enable log file integrity</h2>
-    <p>Log file integrity validation helps you verify that log files have remained unchanged since CloudTrail delivered them. For more information, see <a href="link_to_validating_integrity">Validating CloudTrail log file integrity</a>.</p>
-    <h2>Share log files with other AWS accounts</h2>
-    <p>You can share log files between accounts. For more information, see <a href="link_to_sharing_log_files">Sharing CloudTrail log files between AWS accounts</a>.</p>
-    <h2>Aggregate logs from multiple accounts</h2>
-    <p>You can aggregate log files from multiple accounts to a single bucket. For more information, see <a href="link_to_aggregating_logs">Receiving CloudTrail log files from multiple accounts</a>.</p>
-    <h2>Manage user permissions</h2>
-    <p>Use AWS Identity and Access Management (IAM) to manage which users have permissions to create, configure, or delete trails; start and stop logging; and access buckets that have log files. For more information, see <a href="link_to_iam_permissions">Granting permissions for CloudTrail administration</a>.</p>
-    <h2>Register a delegated administrator</h2>
-    <p>You can register a
-  
-    <h1>What are CloudTrail events?</h1>
-    <p>An event in CloudTrail is the record of an activity in an AWS account. This activity can be an action taken by an IAM identity or service that is monitorable by CloudTrail. CloudTrail events provide a history of both API and non-API account activity made through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. There are three types of events that can be logged in CloudTrail: management events, data events, and CloudTrail Insights events. By default, trails and event data stores log management events, but not data or Insights events.</p>
-  <p>All event types use a CloudTrail JSON log format.</p>
-  <p>For information about AWS services integrated with CloudTrail, see <a href="link_to_aws_service_topics">AWS service topics for CloudTrail</a>.</p>
-  <h1>Management Events</h1>
-  <p>Management events provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations.</p>
-  <p>Example management events include:</p>
-  <ul>
-    <li>Configuring security (for example, AWS Identity and Access Management AttachRolePolicy API operations).</li>
-    <li>Registering devices (for example, Amazon EC2 CreateDefaultVpc API operations).</li>
-    <li>Configuring rules for routing data (for example, Amazon EC2 CreateSubnet API operations).</li>
-    <li>Setting up logging (for example, AWS CloudTrail CreateTrail API operations).</li>
-  </ul>
-  <p>Management events can also include non-API events that occur in your account. For example, when a user signs in to your account, CloudTrail logs the ConsoleLogin event. For more information, see <a href="link_to_non_api_events">Non-API events captured by CloudTrail</a>. For a list of management events that CloudTrail logs for AWS services, see <a href="link_to_supported_services">CloudTrail supported services and integrations</a>.</p>
-<h1>Prerequisites</h1>
-<p>This section provides general information about how to set up an AWS account and describes the managed policies available for CloudTrail.</p>
-<h1>Sign Up for an AWS Account</h1>
-<p>If you do not have an AWS account, complete the following steps to create one.</p>
-<h2>To sign up for an AWS account:</h2>
-<ol>
-  <li>Open <a href="https://portal.aws.amazon.com/billing/signup">https://portal.aws.amazon.com/billing/signup</a>.</li>
-  <li>Follow the online instructions.</li>
-  <li>Part of the sign-up procedure involves receiving a phone call and entering a verification code on the phone keypad.</li>
-</ol>
-<p>When you sign up for an AWS account, an AWS account root user is created. The root user has access to all AWS services and resources in the account. As a security best practice, assign administrative access to an administrative user, and use only the root user to perform tasks that require root user access.</p>
-<p>AWS sends you a confirmation email after the sign-up process is complete. At any time, you can view your current account activity and manage your account by going to <a href="https://aws.amazon.com/">https://aws.amazon.com/</a> and choosing My Account.</p>
-<h2>Secure your AWS account root user</h2>
-  <p>Sign in to the AWS Management Console as the account owner by choosing Root user and entering your AWS account email address. On the next page, enter your password.</p>
-  <p>For help signing in by using root user, see <a href="link_to_sign_in_guide">Signing in as the root user</a> in the AWS Sign-In User Guide.</p>
-  <p>Turn on multi-factor authentication (MFA) for your root user.</p>
-  <p>For instructions, see <a href="link_to_enable_mfa_guide">Enable a virtual MFA device for your AWS account root user (console)</a> in the IAM User Guide.</p>
-  <h2>Create an Administrative User</h2>
-  <p>Enable IAM Identity Center.</p>
-  <p>For instructions, see <a href="link_to_enable_iam_identity_center_guide">Enabling AWS IAM Identity Center</a> in the AWS IAM Identity Center User Guide.</p>
-  <p>In IAM Identity Center, grant administrative access to an administrative user.</p>
-  <p>For a tutorial about using the IAM Identity Center directory as your identity source, see <a href="link_to_configure_user_access_guide">Configure user access with the default IAM Identity Center directory</a> in the AWS IAM Identity Center User Guide.</p>
-  <h2>Sign in as the Administrative User</h2>
-  <p>To sign in with your IAM Identity Center user, use the sign-in URL that was sent to your email address when you created the IAM Identity Center user.</p>
-  <p>For help signing in using an IAM Identity Center user, see <a href="link_to_sign_in_aws_access_portal_guide">Signing in to the AWS access portal</a> in the AWS Sign-In User Guide.</p>
-  <h2>Grant Permissions to Use CloudTrail</h2>
-  <p>To create, update, and manage CloudTrail resources like trails, event data stores, and channels, you need to grant permissions to use CloudTrail.</p>
-  <p>Note: The permissions you grant to users to perform CloudTrail administration tasks aren't the same as the permissions that CloudTrail requires to deliver log files to Amazon S3 buckets or send notifications to Amazon SNS topics. For more information about those permissions, see <a href="link_to_cloudtrail_permissions_guide">Amazon S3 bucket policy for CloudTrail</a>.</p>
-  <p>If you configure integration with Amazon CloudWatch Logs, CloudTrail also requires a role that it can assume to deliver events to an Amazon CloudWatch Logs log group. You must create the role that CloudTrail uses. For more information, see <a href="link_to_cloudwatch_logs_guide">Granting permission to view and configure Amazon CloudWatch Logs information on the CloudTrail console</a> and <a href="link_to_sending_events_to_cloudwatch_logs_guide">Sending events to CloudWatch Logs</a>.</p>
-  <h1>AWSCloudTrail_ReadOnlyAccess Policy</h1>
-  <p>This policy grants permissions to view the CloudTrail console, including recent events and event history. It also allows you to view existing trails, event data stores, and channels. Roles and users with this policy can download the event history, but they can't create or update trails, event data stores, or channels.</p>
-  <h2>To provide access:</h2>
-  <h3>Users and groups in AWS IAM Identity Center:</h3>
-  <ul>
-    <li>Create a permission set. Follow the instructions in <a href="link_to_create_permission_set_guide">Create a permission set</a> in the AWS IAM Identity Center User Guide.</li>
-  </ul>
-  <h3>Users managed in IAM through an identity provider:</h3>
-  <ul>
-    <li>Create a role for identity federation. Follow the instructions in <a href="link_to_create_role_for_federation_guide">Creating a role for a third-party identity provider (federation)</a> in the IAM User Guide.</li>
-  </ul>
-  <h3>IAM users:</h3>
-  <ul>
-    <li>Create a role that your user can assume. Follow the instructions in <a href="link_to_create_role_for_iam_user_guide">Creating a role for an IAM user</a> in the IAM User Guide.</li>
-    <li>(Not recommended) Attach a policy directly to a user or add a user to a user group. Follow the instructions in <a href="link_to_add_permissions_to_user_guide">Adding permissions to a user (console)</a> in the IAM User Guide.</li>
-  </ul>
-  
-  
-</section>
-
-<section>
-    <h1>CloudTrail supported Regions</h1>
-    <h2>Note</h2>
-  <p>For information about Regions supported by CloudTrail Lake, see <a href="link_to_cloudtrail_lake_supported_regions">CloudTrail Lake supported Regions</a>.</p>
-  <p>For information about data plane endpoints, see <a href="link_to_data_plane_endpoints">Data plane endpoints</a> in the AWS General Reference.</p>
-  <h1>CloudTrail Supported Regions</h1>
+ 
+   <h1>Supported Regions</h1>
   <table>
     <tr>
       <th>Region Name</th>
@@ -586,6 +407,14 @@
     <h1>CloudTrail log file examples</h1>
     
     <p>CloudTrail monitors events for your account. If you create a trail, it delivers those events as log files to your Amazon S3 bucket. If you create an event data store in CloudTrail Lake, events are logged to your event data store. Event data stores do not use S3 buckets.</p>
+    <ul>
+    <li>CloudTrail log file name format</li>
+    <li>Log file examples </li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>CloudTrail log file name format</h1>
     <p>CloudTrail uses the following file name format for the log file objects that it delivers to your Amazon S3 bucket:</p>
     <pre>
       AccountID_CloudTrail_RegionName_YYYYMMDDTHHmmZ_UniqueString.FileNameFormat
@@ -597,4 +426,517 @@
     <pre>
         111122223333_CloudTrail_us-east-2_20150801T0210Z_Mu0KsOhtH1ar15ZZ.json.gz
    </pre>
+  </section>
+
+  <section>
+   <h1>Log file examples</h1>
+   <P>A log file contains one or more records. The following examples are snippets of logs that show the records for an action that started the creation of a log file.</P>
+   <h1>Contents</h1>
+   <ul>
+   <li>Amazon EC2 log examples</li>
+  <li>IAM log examples</li>
+  <li>Error code and message log example</li>
+  <li>CloudTrail Insights event log example</li>
+  </ul>
+
+   <h1>1. Amazon EC2 log examples</h1>
+   <p>Amazon EC2 provides resizeable computing capacity in the AWS Cloud. You can launch virtual servers, configure security and networking, and manage storage. EC2 can also scale up or down quickly to handle changes in requirements or spikes in popularity, reducing the need to forecast server traffic.</p>
+
+   <h2>Example:</h2> The following example shows that an IAM user named Mateo ran the <code>aws ec2 start-instances</code> command to call the Amazon EC2 <code>StartInstances</code> action for instances <code>i-EXAMPLE56126103cb</code> and <code>i-EXAMPLEaff4840c22</code>.
+   
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "EXAMPLE6E4XEGITWATV6R",
+        "arn": "arn:aws:iam::123456789012:user/Mateo",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Mateo",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:17:28Z",
+    "eventSource": "ec2.amazonaws.com",
+    "eventName": "StartInstances",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/ec2.start-instances",
+    "requestParameters": {
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-EXAMPLE56126103cb"
+                },
+                {
+                    "instanceId": "i-EXAMPLEaff4840c22"
+                }
+            ]
+        }
+    },
+    "responseElements": {
+        "requestId": "e4336db0-149f-4a6b-844d-EXAMPLEb9d16",
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-EXAMPLEaff4840c22",
+                    "currentState": {
+                        "code": 0,
+                        "name": "pending"
+                    },
+                    "previousState": {
+                        "code": 80,
+                        "name": "stopped"
+                    }
+                },
+                {
+                    "instanceId": "i-EXAMPLE56126103cb",
+                    "currentState": {
+                        "code": 0,
+                        "name": "pending"
+                    },
+                    "previousState": {
+                        "code": 80,
+                        "name": "stopped"
+                    }
+                }
+            ]
+        }
+    },
+    "requestID": "e4336db0-149f-4a6b-844d-EXAMPLEb9d16",
+    "eventID": "e755e09c-42f9-4c5c-9064-EXAMPLE228c7",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management",
+     "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "ec2.us-east-1.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}
+</pre>
+<p>The following example shows that an IAM user named Nikki ran the aws ec2 stop-instances command to call the Amazon EC2 StopInstances action to stop two instances.</p>
+
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "EXAMPLE6E4XEGITWATV6R",
+        "arn": "arn:aws:iam::777788889999:user/Nikki",
+        "accountId": "777788889999",
+        "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+        "userName": "Nikki",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:14:20Z",
+    "eventSource": "ec2.amazonaws.com",
+    "eventName": "StopInstances",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/ec2.stop-instances",
+    "requestParameters": {
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-EXAMPLE56126103cb"
+                },
+                {
+                    "instanceId": "i-EXAMPLEaff4840c22"
+                }
+            ]
+        },
+        "force": false
+    },
+    "responseElements": {
+        "requestId": "c308a950-e43e-444e-afc1-EXAMPLE73e49",
+        "instancesSet": {
+            "items": [
+                {
+                    "instanceId": "i-EXAMPLE56126103cb",
+                    "currentState": {
+                        "code": 64,
+                        "name": "stopping"
+                    },
+                    "previousState": {
+                        "code": 16,
+                        "name": "running"
+                    }
+                },
+                {
+                    "instanceId": "i-EXAMPLEaff4840c22",
+                    "currentState": {
+                        "code": 64,
+                        "name": "stopping"
+                    },
+                    "previousState": {
+                        "code": 16,
+                        "name": "running"
+                    }
+                }
+            ]
+        }
+    },
+    "requestID": "c308a950-e43e-444e-afc1-EXAMPLE73e49",
+    "eventID": "9357a8cc-a0eb-46a1-b67e-EXAMPLE19b14",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777788889999",
+    "eventCategory": "Management",
+     "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "ec2.us-east-1.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}
+</pre>
+
+<p>The following example shows that an IAM user named Arnav ran the aws ec2 create-key-pair command to call the CreateKeyPair action. Note that the responseElements contain a hash of the key pair and that AWS removed the key material.</p>
+
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA6ON6E4XEGIEXAMPLE",
+        "arn": "arn:aws:iam::444455556666:user/Arnav",
+        "accountId": "444455556666",
+        "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+        "userName": "Arnav",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:19:22Z",
+    "eventSource": "ec2.amazonaws.com",
+    "eventName": "CreateKeyPair",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/ec2.create-key-pair",
+    "requestParameters": {
+        "keyName": "my-key",
+        "keyType": "rsa",
+        "keyFormat": "pem"
+    },
+    "responseElements": {
+        "requestId": "9aa4938f-720f-4f4b-9637-EXAMPLE9a196",
+        "keyName": "my-key",
+        "keyFingerprint": "1f:51:ae:28:bf:89:e9:d8:1f:25:5d:37:2d:7d:b8:ca:9f:f5:f1:6f",
+        "keyPairId": "key-abcd12345eEXAMPLE",
+        "keyMaterial": "<sensitiveDataRemoved>"
+    },
+    "requestID": "9aa4938f-720f-4f4b-9637-EXAMPLE9a196",
+    "eventID": "2ae450ff-e72b-4de1-87b0-EXAMPLE5227cb",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "444455556666",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "ec2.us-east-1.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}
+</pre>
+
+
+<h1>2. IAM log examples</h1>
+<p>AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. With IAM, you can centrally manage permissions that control which AWS resources users can access. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources. For more information, see the IAM User Guide.</p>
+
+<p>The following example shows that the IAM user named Mary ran the aws iam create-user command to call the CreateUser action to create a new user named Richard.</p>
+
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA6ON6E4XEGITEXAMPLE",
+        "arn": "arn:aws:iam::888888888888:user/Mary",
+        "accountId": "888888888888",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Mary",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:25:09Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "CreateUser",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/iam.create-user",
+    "requestParameters": {
+        "userName": "Richard"
+    },
+    "responseElements": {
+        "user": {
+            "path": "/",
+            "arn": "arn:aws:iam::888888888888:user/Richard",
+            "userId": "AIDA6ON6E4XEP7EXAMPLE",
+            "createDate": "Jul 19, 2023 9:25:09 PM",
+            "userName": "Richard"
+        }
+    },
+    "requestID": "2d528c76-329e-410b-9516-EXAMPLE565dc",
+    "eventID": "ba0801a1-87ec-4d26-be87-EXAMPLE75bbb",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "888888888888",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "iam.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}  
+</pre>     
+
+<p>The following example shows that the IAM user named Paulo ran the aws iam add-user-to-group command to call the AddUserToGroup action to add a user named Jane to the Admin group.</p>
+
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA6ON6E4XEGIEXAMPLE",
+        "arn": "arn:aws:iam::555555555555:user/Paulo",
+        "accountId": "555555555555",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Paulo",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:25:09Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "AddUserToGroup",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/iam.add-user-to-group",
+    "requestParameters": {
+        "groupName": "Admin",
+        "userName": "Jane"
+    },
+    "responseElements": null,
+    "requestID": "ecd94349-b36f-44bf-b6f5-EXAMPLE9c463",
+    "eventID": "2939ba50-1d26-4a5a-83bd-EXAMPLE85850",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "555555555555",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "iam.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}
+</pre>
+<p>The following example shows that the IAM user named Saanvi ran the aws iam create-role command to call the CreateRole action to create a role.</p>
+
+<pre>
+{"Records": [{
+    "eventVersion": "1.08",
+    "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDA6ON6E4XEGITEXAMPLE",
+        "arn": "arn:aws:iam::777777777777:user/Saanvi",
+        "accountId": "777777777777",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Saanvi",
+        "sessionContext": {
+            "sessionIssuer": {},
+            "webIdFederationData": {},
+            "attributes": {
+                "creationDate": "2023-07-19T21:11:57Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-07-19T21:29:12Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "CreateRole",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.13.5 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/iam.create-role",
+    "requestParameters": {
+        "roleName": "TestRole",
+        "description": "Allows EC2 instances to call AWS services on your behalf.",
+        "assumeRolePolicyDocument": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"sts:AssumeRole\"],\"Principal\":{\"Service\":[\"ec2.amazonaws.com\"]}}]}"
+    },
+    "responseElements": {
+        "role": {
+            "assumeRolePolicyDocument": "%7B%22Version%22%3A%222012-10-17%22%2C%22Statement%22%3A%5B%7B%22Effect%22%3A%22Allow%22%2C%22Action%22%3A%5B%22sts%3AAssumeRole%22%5D%2C%22Principal%22%3A%7B%22Service%22%3A%5B%22ec2.amazonaws.com%22%5D%7D%7D%5D%7D",
+            "arn": "arn:aws:iam::777777777777:role/TestRole",
+            "roleId": "AROA6ON6E4XEFFEXAMPLE",
+            "createDate": "Jul 19, 2023 9:29:12 PM",
+            "roleName": "TestRole",
+            "path": "/"
+        }
+    },
+    "requestID": "ff38f36e-ebd3-425b-9939-EXAMPLE1bbe",
+    "eventID": "9da77cd0-493f-4c89-8852-EXAMPLEa887c",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777777777777",
+    "eventCategory": "Management",
+    "tlsDetails": {
+        "tlsVersion": "TLSv1.2",
+        "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "clientProvidedHostHeader": "iam.amazonaws.com"
+    },
+    "sessionCredentialFromConsole": "true"
+}]}
+</pre>
+
+<h1>3. Error code and message log example</h1>
+  <p>The following example shows that the IAM user named Terry ran the aws cloudtrail update-trail command to call the UpdateTrail action to update a trail named myTrail2, but the trail name was not found. The log shows this error in the errorCode and errorMessage elements.</p>
+  
+  <pre>
+  {"Records": [{
+      "eventVersion": "1.09",
+      "userIdentity": {
+          "type": "IAMUser",
+          "principalId": "AIDA6ON6E4XEGIEXAMPLE",
+          "arn": "arn:aws:iam::111122223333:user/Terry",
+          "accountId": "111122223333",
+          "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+          "userName": "Terry",
+          "sessionContext": {
+              "attributes": {
+                  "creationDate": "2023-07-19T21:11:57Z",
+                  "mfaAuthenticated": "false"
+              }
+          }
+      },
+      "eventTime": "2023-07-19T21:35:03Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "UpdateTrail",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.0",
+      "userAgent": "aws-cli/2.13.0 Python/3.11.4 Linux/4.14.255-314-253.539.amzn2.x86_64 exec-env/CloudShell exe/x86_64.amzn.2 prompt/off command/cloudtrail.update-trail",
+      "errorCode": "TrailNotFoundException",
+      "errorMessage": "Unknown trail: arn:aws:cloudtrail:us-east-1:111122223333:trail/myTrail2 for the user: 111122223333",
+      "requestParameters": {
+          "name": "myTrail2",
+          "isMultiRegionTrail": true
+      },
+      "responseElements": null,
+      "requestID": "28d2faaf-3319-4649-998d-EXAMPLE72818",
+      "eventID": "694d604a-d190-4470-8dd1-EXAMPLEe20c1",
+      "readOnly": false,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Management",
+      "tlsDetails": {
+          "tlsVersion": "TLSv1.2",
+          "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+          "clientProvidedHostHeader": "cloudtrail.us-east-1.amazonaws.com"
+      },
+      "sessionCredentialFromConsole": "true"
+  }]}   
+</pre>
+    
+  <h1>4. CloudTrail Insights event log example</h1>
+<p>The following example shows a CloudTrail Insights event log. An Insights event is actually a pair of events that mark the start and end of a period of unusual write management API activity or error response activity. The state field shows whether the event was logged at the start or end of the period of unusual activity. The event name, UpdateInstanceInformation, is the same name as the AWS Systems Manager API for which CloudTrail analyzed management events to determine that unusual activity occurred. Although the start and end events have unique eventID values, they also have a sharedEventID value that is used by the pair. The Insights event shows the baseline, or the normal pattern of activity, the insight, or average unusual activity that triggered the start Insights event, and in the end event, the insight value for the average unusual activity over the duration of the Insights event. For more information about CloudTrail Insights, see Logging Insights events.</p>
+  
+  <pre>
+  {
+      "Records": [{
+          "eventVersion": "1.08",
+          "eventTime": "2023-01-02T02:51:00Z",
+          "awsRegion": "us-east-1",
+          "eventID": "654a30ff-b0f3-4527-81b6-EXAMPLEf2393",
+          "eventType": "AwsCloudTrailInsight",
+          "recipientAccountId": "123456789012",
+          "sharedEventID": "bcbfc274-8559-4a56-beb0-EXAMPLEa6c34",
+          "insightDetails": {
+              "state": "Start",
+              "eventSource": "ssm.amazonaws.com",
+              "eventName": "UpdateInstanceInformation",
+              "insightType": "ApiCallRateInsight",
+              "insightContext": {
+                  "statistics": {
+                      "baseline": {
+                          "average": 84.410596421
+                      },
+                      "insight": {
+                          "average": 669
+                      }
+                  }
+              }
+          },
+          "eventCategory": "Insight"
+      },
+      {
+          "eventVersion": "1.08",
+          "eventTime": "2023-01-02T00:22:00Z",
+          "awsRegion": "us-east-1",
+          "eventID": "258de2fb-e2a9-4fb5-aeb2-EXAMPLE449a4",
+          "eventType": "AwsCloudTrailInsight",
+          "recipientAccountId": "123456789012",
+          "sharedEventID": "8b74a7bc-d5d3-4d19-9d60-EXAMPLE08b51",
+          "insightDetails": {
+              "state": "End",
+              "eventSource": "ssm.amazonaws.com",
+              "eventName": "UpdateInstanceInformation",
+              "insightType": "ApiCallRateInsight",
+              "insightContext": {
+                  "statistics": {
+                      "baseline": {
+                          "average": 74.156423842
+                      },
+                      "insight": {
+                          "average": 657
+                      },
+                      "insightDuration": 1
+                  }
+              }
+          },
+          "eventCategory": "Insight"
+      }]
+  }
+</pre>
+
 </section>

@@ -279,8 +279,7 @@ code {
 <section>
     <h1>Step 7: Launch EC2 Instances in One of Public Subnets</h1>
     <ol>
-        <li>Navigate to EC2 Dashboard</li>
-        <img src="navigate-to-ec2.png" alt="navigate-to-ec2.png" width="850" height="500">
+        <li>Navigate to EC2 Dashboard.</li>
         <li>Click "Launch Instance."</li>
         <img src="click-on-launch-instance.png" alt="click-on-launch-instance.png" width="850" height="500">
         <li>Give a name for the EC2 instance.</li>
@@ -294,7 +293,7 @@ code {
         <li>In "Network" Click on Edit and Select the VPC you created.</li>
         <img src="vpc for ec2.png" alt="select vpc to instance.png" width="700" height="250">
         <li>Choose one of the public subnets you created.</li>
-        <img src="vpc for ec2.png" alt="select subnet to instance.png" width="700" height="250">
+        <img src="vpc for ec2 copy.png" alt="select subnet to instance.png" width="700" height="250">
         <li>Auto assign public IP should be "Enable".</li>
         <li>Either select an existing security group or create a new one.</li>
         <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
@@ -371,25 +370,33 @@ code {
 
 
         <h2><b>Creating Network Load Balancer:</b></h2>
-            <ol>
-                <li>Name: Enter a name for your NLB.</li>
-                <li>Scheme: Choose the load balancer's scheme (internet-facing).</li>
-                <li>IP Address Type: Choose IPv4.</li>
-                <li>Under Network Mapping Select Your VPC.</li>
-                <li>In Mapping select your subnets which you Created.</li>
-                <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
-                <li>Select the Target group you created.</li>
-                <li>Check Summary.</li>
-                <li>Click on “Create Load Balancer”.</li>
-            </ol>
+        <ol>
+            <li>Click on "Create Load Balancer".</li>
+            <img src="Click on create load balancer.png" alt="Click on create load balancer.png" width="850" height="300">
+            <li>In Network Load Balancer Click on "Create".</li>
+            <li>Name: Enter a name for your NLB.</li>
+            <p>Scheme: Choose the load balancer's scheme (internet-facing) and IP Address Type: Choose IPv4.</p>
+            <img src="name the appliaction load balancer.png" alt="name the appliaction load balancer.png" width="850" height="400">
+            <li>Under Network Mapping Select Your VPC.</li>
+            <img src="select vpc to NLB.png" alt="select vpc to ALB.png" width="850" height="250">
+            <li>In Mapping select your subnets which you Created.</li>
+            <img src="mapping.png" alt="mapping.png" width="850" height="450">
+            <li>Choose an existing security group or create a new one for your NLB (port: 80 should be allowed).</li>
+            <li>Under Listeners and routing Select the Target group you created.</li>
+            <img src="attach target group to NLB.png" alt="attach target group to ALB.png" width="850" height="400">
+            <li>Check Summary and Click on “Create Load Balancer”.</li>
+            <img src="create load balancer.png" alt="create load balancer.png" width="850" height="500">
+    </ol>
 </section>
 
 <section>
     <h1>Verify NLB Configuration</h1>
     <ol>
-        <li>Once the NLB is created, navigate to the "Load Balancers" section and select your NLB to view details.</li>
-        <li>Under the "Listeners" tab, confirm the configuration of the listener set up during NLB creation.</li>
-        <li>Check the "Description" tab to find the DNS name associated with your NLB. Utilize this DNS name to access your application.</li>
+        <li>Once the ALB is created, go to the "Load Balancers" section and select your NLB to view details.</li>
+        <img src="click on load balancer.png" alt="click on load balancer.png" width="900" height="250">
+        <li>Under the "Listeners" tab, you should see the listener configured during NLB creation.</li>
+        <li>Under the "Description" tab, you can find the DNS name of your NLB. Use this DNS name to access your application.</li>
+        <img src="DNS name.png" alt="DNS name.png" width="900" height="480">
     </ol>
 </section>
 

@@ -284,23 +284,23 @@ code {
         <li>Click "Launch Instance."</li>
         <img src="click-on-launch-instance.png" alt="click-on-launch-instance.png" width="850" height="500">
         <li>Give a name for the EC2 instance.</li>
-        <img src="name the instance.png" alt="name the instance.png" width="850" height="355">
+        <img src="name-instance.png" alt="name the instance.png" width="700" height="250">
         <li>Choose an Amazon Machine Image (AMI) based on your application requirements.</li>
-        <img src="select-ubuntu.png" alt="select-ubuntu.png" width="800" height="400">
+        <img src="select-ubuntu.png" alt="select-ubuntu.png" width="750" height="450">
         <li>Select an instance type based on your needs.</li>
-        <img src="select instance type.png" alt="select instance type.png" width="850" height="355">
+        <img src="instance-type.png" alt="select instance type.png" width="700" height="250">
         <li>Choose an existing key pair or create a new one.</li>
-        <img src="select key pair.png" alt="select key pair.png" width="850" height="355">
+        <img src="key-pair.png" alt="select key pair.png" width="700" height="250">
         <li>In "Network" Click on Edit and Select the VPC you created.</li>
-        <img src="select vpc to instance.png" alt="select vpc to instance.png" width="850" height="355">
+        <img src="vpc for ec2.png" alt="select vpc to instance.png" width="700" height="250">
         <li>Choose one of the public subnets you created.</li>
-        <img src="select subnet to instance.png" alt="select subnet to instance.png" width="850" height="355">
+        <img src="vpc for ec2.png" alt="select subnet to instance.png" width="700" height="250">
         <li>Auto assign public IP should be "Enable".</li>
         <li>Either select an existing security group or create a new one.</li>
         <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
         <li>Optionally, you can configure other details like IAM role, user data, etc.</li>
         <li>Click on "Launch Instance</li>
-        <img src="click on launch instance.png" alt="click on launch instance.png" width="850" height="355">
+        <img src="click on launch instance.png" alt="click on launch instance.png" width="600" height="300">
     </ol>
             
                 <div>
@@ -330,8 +330,8 @@ code {
         <h1>Step 8: Launch Second Instance</h1>
     
         <ol>
-            <li>Repeat the above steps to launch the second EC2 instance.</li>
-            <li>Choose the second public subnet for the second instance during the "Configure Instance Details".</li>
+            <li>Repeat the above steps to Launch EC2 Instances in One of Private Subnets.</li>
+            <li>Choose the First Private subnet for the second instance during the "Configure Instance Details".</li>
             <li>Install Apache on the server.</li>
         </ol>
         <h2>Add sample(to check) index.html to /var/www/html on server</h2>

@@ -204,9 +204,13 @@ code {
     <h1>Step 3: Create an Internet Gateway</h1>
     <ol>
         <li>In the VPC Dashboard, click on "Internet Gateways" in the left navigation pane.</li>
+        <img src="select-internet-gatewaay.png" alt="select-internet-gatewaay.png" width="700" height="350">
         <li>Click "Create Internet Gateway".</li>
+        <img src="Click-on-create-igw.png" alt="Click-on-create-igw.png" width="900" height="400">
         <li>Name Internet Gateway.</li>
+        <img src="name-igw.png" alt="name-igw.png" width="900" height="400">
         <li>Click on Create.</li>
+        <img src="create-igw.png" alt="create-igw.png" width="900" height="400">
     </ol>
 </section>
 
@@ -216,23 +220,30 @@ code {
     <ol>
         <li>Select the Internet Gateway you created.</li>
         <li>Click "Actions," and choose "Attach to VPC."</li>
-        <li>Attach it to the VPC you created.</li>
+        <img src="attach-igw-to-vpc.png" alt="attach-igw-to-vpc.png" width="900" height="400">
+        <li>Attach it to the VPC you created and Click on "Attach internet gatewaay".</li>
+        <img src="attach-igw.png" alt="attach-igw.png" width="900" height="400">
     </ol>
 </section>
 
 <section>
-    <h1>Step 5: Create a Public Route Table</h1>
+    <h1>Step 5: Create a Public Route Table for Public Subnet</h1>
     <ol>
         <li>In the VPC Dashboard, click on "Route Tables."</li>
+        <img src="select route table.png" alt="select route table.png" width="650" height="300">
         <li>Create a new route table.</li>
-        <li>Name the route table.</li>
+        <img src="click create route table.png" alt="click create route table.png" width="900" height="300">
+        <li>Name the route table and Select VPC.</li>
+        <img src="name-routetable.png" alt="name-routetable.png" alt="attach-igw.png" width="900" height="400">
         <li>Click on "Create".</li>
+        <img src="create-route-table.png" alt="create-route-table.png" width="900" height="400">
     </ol>
+    <p>Repeat same process for Private Route Table for Private Subnet</p>
 </section>
 
 
 <section>
-    <h1>Step 6: Associate Subnets with Route Table</h1>
+    <h1>Step 6: Associate Subnets with public Route Table</h1>
     <ol>
         <li>In the "Subnets" section, select both public subnets.</li>
         <li>Click “save associations.”</li>

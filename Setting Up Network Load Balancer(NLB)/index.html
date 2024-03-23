@@ -346,18 +346,27 @@ code {
         <li>In the AWS Management Console, go to the EC2 Dashboard.</li>
         <li>In the left navigation pane, click on "Load Balancers" under the "Load Balancing" section and click on the "Target Groups" tab.</li>
         <li>Click the "Create Target Group" button.</li>
+        <img src="click create target group.png" alt="create target group.png" width="850" height="300">
         <li>Choose the target type. For EC2 instances, select "Instance."</li>
+        <img src="target type.png" alt="target type.png" width="850" height="450">
         <li>Name: Enter a name for your Target Group.</li>
-        <li>Protocol: Choose the protocol used by your targets (We need to TCP).</li>
-        <li>Select your VPC.</li>
+        <img src="name-target group.png" alt="name-target group.png" width="850" height="200">
+        <li>Protocol: Choose the protocol used by your targets.</li>
+        <img src="select TCP.png" alt="select TCP.png" width="750" height="270">
+        <li>Select your VPC You Created.</li>
+        <img src="select vpc for target group.png" alt="select vpc for target group.png" width="850" height="200">
         <li>Click "Next: Register Targets."</li>
+        <img src="Click Next.png" alt="Click Next.png" width="850" height="450">
         <li>In the "Register Targets" section:
             <ul>
                 <li>Select the instances (targets) you want to include in the target group.</li>
+                <img src="select both instances.png" alt="select both instances.png" width="850" height="355">
                 <li>Click "Include as Pending below."</li>
+                <img src="include pending below.png" alt="include pending below.png" width="850" height="550">
             </ul>
         </li>
         <li>Review targets and Click “create target group”</li>
+        <img src="click create TG.png" alt="click create TG.png" width="850" height="355">
     </ol>
 
 

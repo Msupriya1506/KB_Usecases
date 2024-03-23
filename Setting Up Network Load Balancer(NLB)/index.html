@@ -243,34 +243,64 @@ code {
 
 
 <section>
-    <h1>Step 6: Associate Subnets with public Route Table</h1>
+    <h1>Step 6: Associate Public Subnets with Public Route Table</h1>
     <ol>
-        <li>In the "Subnets" section, select both public subnets.</li>
+        <li>Click on Public Route Table.</li>
+        <img src="open public route table.png" alt="open public route table.png" width="800" height="250">
+        <li>Click on Subnet associations and Click on Edit Subnet associations.</li>
+        <img src="click on subnet association.png" alt="click on subnet association.png" width="800" height="305">
+        <li>Select the both Public subnets.</li>
+        <img src="select both public subnet.png" alt="select both public subnet.png" width="900" height="450">
         <li>Click “save associations.”</li>
-        <li>Create Route:</li>
+        <img src="save associations.png" alt="save associations.png" width="850" height="400">
+        <li>Create Route for public subnets.</li>
         <ul>
             <li>Click on “Edit route.”</li>
+            <img src="edit route public subnet.png" alt="edit route public subnet.png" width="800" height="355">
             <li>Click on “Add Route.”</li>
+            <img src="add route.png" alt="add route.png" width="800" height="305">
             <li>Edit the routes to include a route to the Internet Gateway (0.0.0.0/0) and select your Internet Gateway.</li>
+            <img src="select igw to public route table.png" alt="select igw to public route table.png" width="850" height="355">
             <li>Click “save changes.”</li>
+            <img src="save changes.png" alt="save changes.png" width="950" height="350">
         </ul>
+    </ol>
+    <h1>Associate Private Subnets with Private Route Table</h1>
+    <ol>
+        <li>Repeat same process for subnet associations.</li>
+        <ul>
+             <li>Add two Private subnets for subnet associations.</li>
+        </ul> 
+        <li>Dont Create Route for Private Route table.</li>
+        <p><strong>"NOTE: There will be no internet access for private route tables."</strong></p>
     </ol>
 </section>
 
 <section>
-    <h1>Step 7: Launch EC2 Instances in Public Subnets</h1>
+    <h1>Step 7: Launch EC2 Instances in One of Public Subnets</h1>
     <ol>
-        <li>Click on "Instances" in the left navigation pane.</li>
+        <li>Navigate to EC2 Dashboard</li>
+        <img src="navigate-to-ec2.png" alt="navigate-to-ec2.png" width="850" height="500">
         <li>Click "Launch Instance."</li>
+        <img src="click-on-launch-instance.png" alt="click-on-launch-instance.png" width="850" height="500">
         <li>Give a name for the EC2 instance.</li>
+        <img src="name the instance.png" alt="name the instance.png" width="850" height="355">
         <li>Choose an Amazon Machine Image (AMI) based on your application requirements.</li>
+        <img src="select-ubuntu.png" alt="select-ubuntu.png" width="800" height="400">
         <li>Select an instance type based on your needs.</li>
+        <img src="select instance type.png" alt="select instance type.png" width="850" height="355">
         <li>Choose an existing key pair or create a new one.</li>
-        <li>Select your VPC in the "Network" dropdown.</li>
-        <li>Choose one of the public subnets you created for the first instance.</li>
+        <img src="select key pair.png" alt="select key pair.png" width="850" height="355">
+        <li>In "Network" Click on Edit and Select the VPC you created.</li>
+        <img src="select vpc to instance.png" alt="select vpc to instance.png" width="850" height="355">
+        <li>Choose one of the public subnets you created.</li>
+        <img src="select subnet to instance.png" alt="select subnet to instance.png" width="850" height="355">
+        <li>Auto assign public IP should be "Enable".</li>
         <li>Either select an existing security group or create a new one.</li>
         <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
         <li>Optionally, you can configure other details like IAM role, user data, etc.</li>
+        <li>Click on "Launch Instance</li>
+        <img src="click on launch instance.png" alt="click on launch instance.png" width="850" height="355">
     </ol>
             
                 <div>

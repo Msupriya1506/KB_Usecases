@@ -74,10 +74,23 @@
 
 <body>
 
-    <header>
-        <h1 id="Deploy_Docker_Containers" class="lb-txt-none lb-txt-white lb-none-v-margin lb-h1 lb-title" style="margin-top: 10px; margin-bottom: 5px;">AWS Switch Role</h1>   
-        <h1 id="on_Amazon_Elastic_Container_Service_.28Amazon_ECS.29" class="lb-txt-none lb-txt-white lb-none-v-margin lb-h2 lb-title" style="margin-top: 5px; margin-bottom: 5px; color: white;">Simplifying Access and Enhancing Security</h1>
-    </header>
+    <div class="lb-transition-wrapper lb-transition-fade-in lb-active" data-lb-comp="transition-wrapper" data-lb-comp-registered="true">
+        <div class="lb-none-pad lb-grid lb-row lb-row-max-large lb-snap" style="display: flex; align-items: center;">
+            <div class="lb-col lb-tiny-24 lb-mid-24">
+                <div class="lb-bg-left-top-cover lb-border-p lb-small-pad lb-box" style="padding-left: 500px; padding-right: 500px; padding-bottom: 0px; background-image: url('https://s3.cn-north-1.amazonaws.com.cn/aws-dam-prod/tmt/template/GSRC_Tutorials_Congratulations.08882b89ba8adfe231cdb223e7ccfb462038399f.png'); background-color: #ffffff;">
+                    <h1 id="Congratulations.21" class="lb-tiny-align-center lb-small-align-center lb-mid-align-center lb-large-align-center lb-xlarge-align-center lb-txt-none lb-txt-white lb-h1 lb-title">Amazon Switch Role</h1>
+                    <div class="lb-grid lb-row lb-row-max-large lb-snap" style="padding-top: 0px; margin-top: 0px;">
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                        <div class="lb-col lb-tiny-24 lb-mid-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <section>
         <p>AWS Switch Role simplifies user access to different AWS accounts, enabling users to assume roles across accounts seamlessly. It streamlines user management and access control, providing a centralized approach. Users can switch roles securely, and administrators get a unified dashboard for efficient access management. Integration with identity providers, like Active Directory, enhances authentication simplicity and security.</p>
@@ -186,7 +199,21 @@
 
 <p>E. While creating the in-line policy, add the Account-B IAM role ARN in the policy.</p>
 <ul>
-<li>Should look like in Image</li>
+<li>Should look like this</li>
+<pre>
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": "change-arn"
+            }
+        ]
+    }
+    
+</pre>
 </ul>
 <img src="AWS_switchrole-JSON-Format.png" alt="AWS_switchrole-JSON-Format.png" width="750" height="500">
 <P>F. Click "Next"</P>

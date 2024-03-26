@@ -246,7 +246,6 @@ code {
             <img src="internet-gatewaay.png" alt="internet-gatewaay.png" width="900" height="355">
             <li>Click “save changes.”</li>
             <img src="save-changes.png" alt="save-changes.png" width="900" height="305">
-
         </ul>
     </ol>
 </section>
@@ -255,17 +254,27 @@ code {
     <h1>Step 2: Launch EC2 Instances in Public Subnets</h1>
     <h2>Launch First EC2 Instance:</h2>
     <ol>
-        <li>Click on "Instances" in the left navigation pane.</li>
+        <li>Navigate to EC2 Dashboard</li>
         <li>Click "Launch Instance."</li>
+        <img src="launch-instance.png" alt="launch-instance.png" width="850" height="500">
         <li>Give a name for the EC2 instance.</li>
+        <img src="name-ec2-instance.png" alt="name-ec2-instance.png" width="500" height="150">
         <li>Choose an Amazon Machine Image (AMI) based on your application requirements.</li>
+        <img src="select-ubuntu.png" alt="select-ubuntu.png" width="700" height="400">
         <li>Select an instance type based on your needs.</li>
+        <img src="instance-type.png" alt="instance-type.png" width="600" height="255">
         <li>Choose an existing key pair or create a new one.</li>
-        <li>Select your VPC in the "Network" dropdown.</li>
-        <li>Choose one of the public subnets you created for the first instance.</li>
+        <img src="key-pair.png" alt="key-pair.png" width="600" height="255">
+        <li>In "Network" Click on Edit and Select the VPC you created.</li>
+        <img src="vpc for instances.png" alt="vpc for instances.png" width="650" height="250">
+        <li>Choose one of the public subnets you created.</li>
+        <img src="subnet-instance.png" alt="subnet-instance.png" width="650" height="200">
+        <li>Auto assign public IP should be "Enable".</li>
         <li>Either select an existing security group or create a new one.</li>
         <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
         <li>Optionally, you can configure other details like IAM role, user data, etc.</li>
+        <li>Click on "Launch Instance</li>
+        <img src="click-launch-instance.png" alt="click-launch-instance.png" width="350" height="200">
     </ol>
             
                 <div>

@@ -334,29 +334,31 @@ code {
 
         <h2><b>Creating Application Load Balancer:</b></h2>
         <ol>
-            <li>Click on "Create Load Balancer".</li>
-            <img src="Click on create load balancer.png" alt="Click on create load balancer.png" width="850" height="300">
-            <li>In Application Load Balancer Click on "Create".</li>
-            <li>Name: Enter a name for your ALB.</li>
-            <p>Scheme: Choose the load balancer's scheme (internet-facing) and IP Address Type: Choose IPv4.</p>
-            <img src="name the appliaction load balancer.png" alt="name the appliaction load balancer.png" width="850" height="400">
-            <li>Under Network Mapping Select Your VPC.</li>
-            <img src="select vpc to ALB.png" alt="select vpc to ALB.png" width="850" height="250">
-            <li>In Mapping select your subnets which you Created.</li>
-            <img src="mapping.png" alt="mapping.png" width="850" height="450">
-            <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
-            <img src="select security to ALB.png" alt="select security to ALB.png" width="850" height="250">
-            <li>Under Listeners and routing Select the Target group you created.</li>
-            <img src="attach target group to ALB.png" alt="attach target group to ALB.png" width="850" height="400">
-            <li>Check Summary and Click on “Create Load Balancer”.</li>
-            <img src="create load balancer.png" alt="create load balancer.png" width="850" height="500">
-    </ol>
+                <li>Click on "Create Load Balancer".</li>
+                <img src="create load balancer.png" alt="create load balancer.png" width="850" height="300">
+                <li>In Application Load Balancer Click on "Create".</li>
+                <li>Name: Enter a name for your ALB.</li>
+                <p>Scheme: Choose the load balancer's scheme (internet-facing) and IP Address Type: Choose IPv4.</p>
+                <img src="name-alb.png" alt="name-alb.png" width="850" height="400">
+                <li>Under Network Mapping Select Your VPC.</li>
+                <img src="vpc-alb.png" alt="vpc-alb.png" width="850" height="250">
+                <li>In Mapping select your subnets which you Created.</li>
+                <img src="subnets-alb.png" alt="subnets-alb.png" width="850" height="450">
+                <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
+                <img src="security-alb.png" alt="security-alb.png" width="850" height="250">
+                <li>Under Listeners and routing Select the Target group you created.</li>
+                <img src="listeners-alb.png" alt="listeners-alb.png" width="850" height="400">
+                <li>Check Summary and Click on “Create Load Balancer”.</li>
+                <img src="click-create-loadbalancer.png" alt="click-create-loadbalancer.png" width="850" height="500">
+        </ol>
 
 <h1>Verify ALB Configuration</h1>
 <ol>
     <li>Once the ALB is created, go to the "Load Balancers" section and select your ALB to view details.</li>
+    <img src="click-alb.png" alt="click-alb.png" width="850" height="300">
     <li>Under the "Listeners" tab, you should see the listener configured during ALB creation.</li>
     <li>Under the "Description" tab, you can find the DNS name of your ALB. Use this DNS name to access your application.</li>
+    <img src="DNS-name.png" alt="DNS-name.png" width="800" height="500">
 </ol>
 </section>
 
@@ -367,20 +369,26 @@ code {
     <ol>
         <li>Go to AWS WAF & Shield service.</li>
         <li>Click on IP Set.</li>
-        <li>Click on "Create IP set".</li>
+        <img src="nagivate-IP-set.png" alt="nagivate-IP-set.png" width="350" height="300">
+        <li>Select the Region and Click on "Create IP set".</li>
+        <img src="create-IP set.png" alt="create-IP set.png" width="800" height="450">
         <li>Give your IP Set a name and optionally a description.</li>
-        <li>Select the region you want to create.</li>
+        <img src="nmae-IP set.png" alt="nmae-IP set.png" width="750" height="200">
+        <li>Check the region you want to create.</li>
         <li>IP version should be IPV4.</li>
         <li>Add IP addresses which you want to Block (for example your laptop IP address).</li>
+        <img src="IP Address.png" alt="IP Address.png" width="800" height="500">
         <li>Click on "Create IP Set".</li>
+        <img src="click-create-IP Set.png" alt="click-create-IP Set.png" width="600" height="300">
     </ol>
 
     <h2>Create Web ACL</h2>
     <ol>
         <li>Go to AWS WAF & Shield service.</li>
-        <li>Select the Region you want to create.</li>
-        <li>Click on "Create web ACL".</li>
+        <li>Select the Region you want to create and Click on "Create web ACL".</li>
+        <img src="create web ACL.png" alt="create web ACL.png" width="600" height="300">
         <li>Give your web ACL a name and optionally a description.</li>
+        <img src="name-ACL.png" alt="name-ACL.png" width="600" height="300">
         <li>Resource type is "Regional resource".</li>
         <li>Check the region.</li>
         <li>Click on "Add AWS resource".</li>

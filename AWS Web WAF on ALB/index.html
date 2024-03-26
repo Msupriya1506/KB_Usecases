@@ -169,14 +169,25 @@ code {
     <h2>Creating Public Subnets</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Subnets" in the left navigation pane.</li>
-        <li>Click "Create subnet" and choose the VPC you just created.</li>
+        <img src="navigate-subnet.png" alt="navigate-subnet.png" width="450" height="225">
+        <li>Click "Create subnet".</li>
+        <img src="create-subnet.png" alt="create-subnet.png" width="750" height="250">
         <li>Create the public subnets:</li>
         <ul>
+            <li>Choose the VPC you just created.</li>
+            <img src="select-vpc-subnet.png" alt="select-vpc-subnet.png" width="550" height="250">
             <li>Specify a name.</li>
+            <img src="name-subnet.png" alt="name-subnet.png" width="550" height="250">
             <li>Select the availability zone.</li>
+            <img src="select-1a.png" alt="select-1a.png" width="600" height="250">
             <li>Enter the CIDR block for the subnet within the VPC CIDR range.</li>
+            <img src="CIDR-subnet.png" alt="CIDR-subnet.png" width="600" height="250">
+            <li>Click on "Add new subnet".</li>
+            <img src="add-new-subnet.png" alt="add-new-subnet.png" width="550" height="200">
             <li>Repeat the process to create the second public subnet in a different availability zone.</li>
+            <img src="subnet-2.png" alt="subnet-2.png" width="550" height="400">
             <li>Click on "Create subnet".</li>
+            <img src="click-create-subnet.png" alt="click-create-subnet.png" width="550" height="200">
         </ul>
     </ol>
 
@@ -206,21 +217,36 @@ code {
     <h2>Create a Public Route Table</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Route Tables."</li>
+        <img src="navigate-routetable.png" alt="click-create-routetable.png" width="400" height="250">
         <li>Create a new route table.</li>
-        <li>Name the route table.</li>
+        <img src="create-routetable.png" alt="create-routetable.png" width="750" height="250">
+        <li>Name the route table and Select VPC created.</li>
+        <img src="name-routetable.png" alt="name-routetable.png" width="550" height="350">
         <li>Click on "Create".</li>
+        <img src="click-create-routetable.png" alt="click-create-routetable.png" width="550" height="300">
+
     </ol>
 
     <h2>Associate Subnets with Route Table</h2>
     <ol>
-        <li>In the "Subnets" section, select both public subnets.</li>
+        <li>Click on Route Table.</li>
+        <li>Click on Subnet associations and Click on Edit Subnet associations.</li>
+        <img src="subnet-association.png" alt="click-subnet-associations.png" width="800" height="350">
+        <li>Select the both subnets.</li>
+        <img src="select-two-subnets.png" alt="select-both-subnets.png" width="900" height="400">
         <li>Click “save associations.”</li>
+        <img src="save-associations.png" alt="Click-on-save-associations.png" width="900" height="420">
         <li>Create Route:</li>
         <ul>
             <li>Click on “Edit route.”</li>
+            <img src="edit-routes.png" alt="edit-routes.png" width="900" height="400">
             <li>Click on “Add Route.”</li>
+            <img src="add-route.png" alt="add-route.png" width="800" height="305">
             <li>Edit the routes to include a route to the Internet Gateway (0.0.0.0/0) and select your Internet Gateway.</li>
+            <img src="internet-gatewaay.png" alt="internet-gatewaay.png" width="900" height="355">
             <li>Click “save changes.”</li>
+            <img src="save-changes.png" alt="save-changes.png" width="900" height="305">
+
         </ul>
     </ol>
 </section>

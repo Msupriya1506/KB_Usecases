@@ -157,39 +157,50 @@ code {
     <h2>Create a VPC:</h2>
     <ol>
         <li>Click on "Create VPC" and follow the wizard.</li>
-        <!-- <img src="create-click-vpc.PNG" alt="create-click-vpc.PNG" width="325" height="170"> -->
-        <li>Specify a name for your VPC, define the IP address range (CIDR block).</li>
-        <!-- <img src="VPC.PNG" alt="VPC.PNG" width="375" height="350"> -->
-
+        <img src="create-vpc.png" alt="create-vpc.png" width="500" height="200">
+        <li>Specify a name for your VPC.</li>
+        <img src="name-vpc.png" alt="name-vpc.png" width="550" height="300">
+        <li>Define the IP address range (CIDR block).</li>
+        <img src="CIDR-VPC.png" alt="CIDR-VPC.png" width="550" height="300">
         <li>Click on "Create VPC".</li>
+        <img src="click-create-vpc.png" alt="click-create-vpc.png" width="550" height="200">
     </ol>
 
     <h2>Creating Public Subnets</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Subnets" in the left navigation pane.</li>
         <li>Click "Create subnet" and choose the VPC you just created.</li>
-        <li>Create the first public subnet:</li>
+        <li>Create the public subnets:</li>
         <ul>
             <li>Specify a name.</li>
             <li>Select the availability zone.</li>
             <li>Enter the CIDR block for the subnet within the VPC CIDR range.</li>
-            <li>Configure other settings as needed.</li>
-            <li>Ensure the "Auto-assign IPv4" property is enabled.</li>
+            <li>Repeat the process to create the second public subnet in a different availability zone.</li>
+            <li>Click on "Create subnet".</li>
         </ul>
-        <li>Repeat the process to create the second public subnet in a different availability zone.</li>
     </ol>
 
     <h2>Create an Internet Gateway</h2>
     <ol>
         <li>In the VPC Dashboard, click on "Internet Gateways" in the left navigation pane.</li>
-        <li>Click "Create Internet Gateway," attach it to your VPC, and ensure it's in a "detached" state initially.</li>
+        <img src="navigate-igw.png" alt="navigate-igw.png" width="400" height="200">
+        <li>Click "Create Internet Gateway". </li>
+        <img src="create-igw.png" alt="create-igw.png" width="800" height="305">
+        <li>Name Internet gateway.</li>
+        <img src="name-igw.png" alt="name-igw.png" width="500" height="250">
+        <li>Click on "Create Internet gateway".</li>
+        <img src="click-create-igw.png" alt="click-create-igw.png" width="550" height="300">
     </ol>
 
     <h2>Attach Internet Gateway to VPC</h2>
     <ol>
         <li>Select the Internet Gateway you created.</li>
         <li>Click "Actions," and choose "Attach to VPC."</li>
-        <li>Attach it to the VPC you created.</li>
+        <img src="attach-vpc.png" alt="attach-vpc.png" width="600" height="200">
+        <li>Select VPC Created.</li>
+        <img src="select-vpc-igw.png" alt="select-vpc-igw.png" width="550" height="300">
+        <li>Click on Attach internet gateway.</li>
+        <img src="attach-igw-vpc.png" alt="attach-igw-vpc.png" width="550" height="300">
     </ol>
 
     <h2>Create a Public Route Table</h2>
@@ -216,6 +227,7 @@ code {
 
 <section>
     <h1>Step 2: Launch EC2 Instances in Public Subnets</h1>
+    <h2>Launch First EC2 Instance:</h2>
     <ol>
         <li>Click on "Instances" in the left navigation pane.</li>
         <li>Click "Launch Instance."</li>
@@ -252,7 +264,7 @@ code {
 
     <h2>Add sample(to check) index.html to /var/www/html on server</h2>
 
-    <h1>Launch Second Instance</h1>
+    <h1>Launch Second Instance:</h1>
 
     <ol>
         <li>Repeat the above steps to launch the second EC2 instance.</li>

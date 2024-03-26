@@ -386,40 +386,57 @@ code {
     <ol>
         <li>Go to AWS WAF & Shield service.</li>
         <li>Select the Region you want to create and Click on "Create web ACL".</li>
-        <img src="create web ACL.png" alt="create web ACL.png" width="600" height="300">
+        <img src="create web ACL.png" alt="create web ACL.png" width="700" height="400">
         <li>Give your web ACL a name and optionally a description.</li>
         <img src="name-ACL.png" alt="name-ACL.png" width="600" height="300">
-        <li>Resource type is "Regional resource".</li>
-        <li>Check the region.</li>
-        <li>Click on "Add AWS resource".</li>
+        <li>Resource type is "Regional resource" and Check the region.</li>
+        <img src="resource type.png" alt="resource type.png" width="600" height="250">
+        <li>Under Associated AWS resources Click on "Add AWS resource".</li>
+        <img src="add AWS resource.png" alt="add AWS resource.png" width="550" height="200">
         <li>Select Application Load Balancer and select ALB which you created.</li>
+        <img src="select alb created.png" alt="select alb created.png" width="600" height="350">
+        <li>Click on Add.</li>
+        <img src="click add.png" alt="click add.png" width="600" height="350">
+        <li>Click on "Next".</li>
+        <img src="click-next.png" alt="click-next.png" width="550" height="200">
         <li>Add rules to your web ACL to specify the actions to take when a request matches the conditions.</li>
         <li>Click on "Add rules" and select "Add my own rules and rule groups".</li>
+        <img src="add rules.png" alt="add rules.png" width="600" height="300">
         <li>Select the "IP Set".</li>
+        <img src="select IP SET.png" alt="select IP SET.png" width="600" height="300">
         <li>Name the Rule.</li>
+        <img src="name the rule.png" alt="name the rule.png" width="600" height="200">
         <li>Select the IP set which you created.</li>
+        <img src="select created IP Set.png" alt="select created IP Set.png" width="600" height="250">
         <li>Select the action which you need (For Example, select Block).</li>
+        <img src="action.png" alt="action.png" width="550" height="200">
         <li>Click on "Add rule".</li>
+        <img src="block-add rule.png" alt="block-add rule.png" width="550" height="250">
         <li>Under Add rules and rule groups, select the rule.</li>
+        <img src="select the rule.png" alt="block-add rule.png" width="550" height="250">
         <li>Click on "Next".</li>
+        <img src="click on next.png" alt="block-add rule.png" width="550" height="250">
         <li>Under Set rule priority, select the rule.</li>
+        <img src="set rule priority.png" alt="block-add rule.png" width="550" height="250">
         <li>Click on "Next".</li>
-        <li>Under configure metrics, keep them default.</li>
+        <img src="set rule next.png" alt="block-add rule.png" width="550" height="250">
+        <li>Under configure metrics, select the Rule.</li>
+        <img src="configure metrics.png" alt="configure metrics.png" width="550" height="250">
         <li>Click on "Next".</li>
+        <img src="configure metrics next.png" alt="configure metrics.png" width="550" height="250">
         <li>Review and create the web ACL.</li>
+        <img src="click-create-web acl.png" alt="click-create-web acl.png" width="530" height="200">
     </ol>
     
-    <h2>Associate WAF with ALB</h2>
-    <ol>
-        <li>After creating the ALB, navigate back to the AWS WAF & Shield service.</li>
-        <li>Go to "Web ACLs" and select the web ACL you created earlier.</li>
-        <li>Click on "Associate AWS resources" and check if ALB is associated with it.</li>
-        <li>Click on "Rules" and check if the rule is attached.</li>
-    </ol>
+    <li></li>
 
     <h2>Testing, Monitoring, and Adjustments</h2>
     <ol>
         <li>After associating the WAF with the ALB, test your application to ensure that traffic is being routed through the ALB and filtered by the WAF rules.</li>
+        <ul>
+           <li><strong>check By using ALB DNS Name.</strong></li>
+           <img src="output.png" alt="output.png" width="700" height="400">
+        </ul>
         <li>Monitor the AWS WAF metrics and ALB metrics to ensure that your setup is working as expected.</li>
         <li>Adjust WAF rules and ALB settings as needed based on your application's traffic patterns and security requirements.</li>
     </ol>

@@ -252,7 +252,6 @@ code {
 
 <section>
     <h1>Step 2: Launch EC2 Instances in Public Subnets</h1>
-    <h2>Launch First EC2 Instance:</h2>
     <ol>
         <li>Navigate to EC2 Dashboard</li>
         <li>Click "Launch Instance."</li>
@@ -298,16 +297,8 @@ code {
                 </div>
 
     <h2>Add sample(to check) index.html to /var/www/html on server</h2>
+</section>
 
-    <h1>Launch Second Instance:</h1>
-
-    <ol>
-        <li>Repeat the above steps to launch the second EC2 instance.</li>
-        <li>Choose the second public subnet for the second instance during the "Configure Instance Details".</li>
-        <li>Install Apache on the server.</li>
-    </ol>
-    <h2>Add sample(to check) index.html to /var/www/html on server</h2>
-   </section>
 
    <section>
     <h1>Step 3: Creating Target Group and Application Load Balancer</h1>
@@ -317,32 +308,49 @@ code {
         <li>In the AWS Management Console, go to the EC2 Dashboard.</li>
         <li>In the left navigation pane, click on "Load Balancers" under the "Load Balancing" section and click on the "Target Groups" tab.</li>
         <li>Click the "Create Target Group" button.</li>
+        <img src="create-target group.png" alt="create-target group.png" width="850" height="300">
         <li>Choose the target type. For EC2 instances, select "Instance."</li>
+        <img src="target type.png" alt="target type.png" width="850" height="450">
         <li>Name: Enter a name for your Target Group.</li>
+        <img src="name target group.png" alt="name target group.png" width="800" height="200">
         <li>Protocol: Choose the protocol used by your targets (e.g., HTTP or HTTPS).</li>
-        <li>Select your VPC.</li>
+        <img src="Protocol.png" alt="Protocol.png" width="800" height="250">
+        <li>Select your VPC You Created.</li>
+        <img src="vpc target group.png" alt="vpc target group.png" width="800" height="355">
         <li>Click "Next: Register Targets."</li>
+        <img src="Click Next.png" alt="Click Next.png" width="800" height="330">
         <li>In the "Register Targets" section:
             <ul>
                 <li>Select the instances (targets) you want to include in the target group.</li>
+                <img src="select-instance-targetgroup.png" alt="select-instance-targetgroup.png" width="870" height="400">
                 <li>Click "Include as Pending below."</li>
+                <img src="include pending below.png" alt="include pending below.png" width="850" height="500">
             </ul>
         </li>
         <li>Review targets and Click “create target group”</li>
+        <img src="click create target group.png" alt="click create target group.png" width="850" height="355">
     </ol>
+
 
         <h2><b>Creating Application Load Balancer:</b></h2>
         <ol>
-                <li>Name: Enter a name for your ALB.</li>
-                <li>Scheme: Choose the load balancer's scheme (internet-facing).</li>
-                <li>IP Address Type: Choose IPv4.</li>
-                <li>Under Network Mapping Select Your VPC.</li>
-                <li>In Mapping select your subnets which you Created.</li>
-                <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
-                <li>Select the Target group you created.</li>
-                <li>Check Summary.</li>
-                <li>Click on “Create Load Balancer”.</li>
-        </ol>
+            <li>Click on "Create Load Balancer".</li>
+            <img src="Click on create load balancer.png" alt="Click on create load balancer.png" width="850" height="300">
+            <li>In Application Load Balancer Click on "Create".</li>
+            <li>Name: Enter a name for your ALB.</li>
+            <p>Scheme: Choose the load balancer's scheme (internet-facing) and IP Address Type: Choose IPv4.</p>
+            <img src="name the appliaction load balancer.png" alt="name the appliaction load balancer.png" width="850" height="400">
+            <li>Under Network Mapping Select Your VPC.</li>
+            <img src="select vpc to ALB.png" alt="select vpc to ALB.png" width="850" height="250">
+            <li>In Mapping select your subnets which you Created.</li>
+            <img src="mapping.png" alt="mapping.png" width="850" height="450">
+            <li>Choose an existing security group or create a new one for your ALB (port: 80 should be allowed).</li>
+            <img src="select security to ALB.png" alt="select security to ALB.png" width="850" height="250">
+            <li>Under Listeners and routing Select the Target group you created.</li>
+            <img src="attach target group to ALB.png" alt="attach target group to ALB.png" width="850" height="400">
+            <li>Check Summary and Click on “Create Load Balancer”.</li>
+            <img src="create load balancer.png" alt="create load balancer.png" width="850" height="500">
+    </ol>
 
 <h1>Verify ALB Configuration</h1>
 <ol>

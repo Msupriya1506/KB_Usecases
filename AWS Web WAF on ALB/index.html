@@ -266,9 +266,8 @@ code {
         <img src="key-pair.png" alt="key-pair.png" width="600" height="255">
         <li>In "Network" Click on Edit and Select the VPC you created.</li>
         <img src="vpc for instances.png" alt="vpc for instances.png" width="650" height="250">
-        <li>Choose one of the public subnets you created.</li>
+        <li>Choose one of the public subnets you created and Auto assign public IP should be "Enable".</li>
         <img src="subnet-instance.png" alt="subnet-instance.png" width="650" height="200">
-        <li>Auto assign public IP should be "Enable".</li>
         <li>Either select an existing security group or create a new one.</li>
         <li>Ensure the security group allows inbound traffic on the ports your application needs (e.g., HTTP on port 80).</li>
         <li>Optionally, you can configure other details like IAM role, user data, etc.</li>
@@ -357,8 +356,11 @@ code {
     <li>Once the ALB is created, go to the "Load Balancers" section and select your ALB to view details.</li>
     <img src="click-alb.png" alt="click-alb.png" width="850" height="300">
     <li>Under the "Listeners" tab, you should see the listener configured during ALB creation.</li>
-    <li>Under the "Description" tab, you can find the DNS name of your ALB. Use this DNS name to access your application.</li>
+    <li>Under the "Description" tab, you can find the DNS name of your ALB.</li>
     <img src="DNS-name.png" alt="DNS-name.png" width="800" height="500">
+    <li>Use this DNS name to access your application through internet.</li>
+    <img src="DNS-Output.png" alt="DNS-Output.png" width="700" height="400">
+
 </ol>
 </section>
 
@@ -367,7 +369,7 @@ code {
     
     <h2>Creating IP Set</h2>
     <ol>
-        <li>Go to AWS WAF & Shield service.</li>
+        <li>In the AWS Management Console, Go to AWS WAF & Shield service.</li>
         <li>Click on IP Set.</li>
         <img src="nagivate-IP-set.png" alt="nagivate-IP-set.png" width="350" height="300">
         <li>Select the Region and Click on "Create IP set".</li>
@@ -384,10 +386,11 @@ code {
 
     <h2>Create Web ACL</h2>
     <ol>
-        <li>Go to AWS WAF & Shield service.</li>
+        <li>In the AWS Management Console, Go to AWS WAF & Shield service.</li>
+        <li>Click on Web ACL</li>
         <li>Select the Region you want to create and Click on "Create web ACL".</li>
         <img src="create web ACL.png" alt="create web ACL.png" width="700" height="400">
-        <li>Give your web ACL a name and optionally a description.</li>
+        <li>Give your web ACL a name.</li>
         <img src="name-ACL.png" alt="name-ACL.png" width="600" height="300">
         <li>Resource type is "Regional resource" and Check the region.</li>
         <img src="resource type.png" alt="resource type.png" width="600" height="250">
@@ -399,7 +402,6 @@ code {
         <img src="click add.png" alt="click add.png" width="600" height="350">
         <li>Click on "Next".</li>
         <img src="click-next.png" alt="click-next.png" width="550" height="200">
-        <li>Add rules to your web ACL to specify the actions to take when a request matches the conditions.</li>
         <li>Click on "Add rules" and select "Add my own rules and rule groups".</li>
         <img src="add rules.png" alt="add rules.png" width="600" height="300">
         <li>Select the "IP Set".</li>
